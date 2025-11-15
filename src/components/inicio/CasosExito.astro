@@ -1,0 +1,66 @@
+---
+const {
+  title = "Casos de éxito",
+  subtitle = "Conoce algunas de las implementaciones y resultados alcanzados junto a nuestros clientes.",
+  casos = [
+    {
+      image: "/img/casos/mineria.jpg",
+      empresa: "Compañía Minera del Norte",
+      resumen:
+        "Diseñamos e implementamos un programa integral de capacitación en seguridad industrial, reduciendo incidentes laborales en un 35 % durante el primer año.",
+      href: "/casos/mineria",
+    },
+    {
+      image: "/img/casos/educacion.jpg",
+      empresa: "Institución Educacional Los Pinos",
+      resumen:
+        "Acompañamos la digitalización de procesos académicos, mejorando la gestión docente y reduciendo el tiempo administrativo en un 40 %.",
+      href: "/casos/educacion",
+    },
+    {
+      image: "/img/casos/energia.jpg",
+      empresa: "Energía y Servicios Andinos",
+      resumen:
+        "Capacitación técnica avanzada en mantenimiento eléctrico, elevando la eficiencia operativa y la retención de personal especializado.",
+      href: "/casos/energia",
+    },
+  ],
+} = Astro.props;
+---
+<section id ="casosexito"class="py-24 mt-12 bg-[#f9fafb] font-[Verdana,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif]">
+  <div class="max-w-6xl mx-auto px-6 md:px-12 text-center">
+    <header class="mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-[#0b1a33]">{title}</h2>
+      <p class="text-slate-600 mt-3">{subtitle}</p>
+      <div class="mt-4 h-[2px] w-16 mx-auto bg-[#0b1a33]"></div>
+    </header>
+
+    <div class="grid gap-8 md:grid-cols-3">
+      {casos.map((c: { image: string | null | undefined; empresa: unknown; resumen: unknown; href: string | URL | null | undefined; }) => (
+        <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+          <div class="h-52 w-full overflow-hidden">
+            <img
+              src={c.image}
+              alt={String(c.empresa)}
+              class="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+          <div class="p-6 text-left">
+            <h3 class="text-xl font-bold text-[#0b1a33] mb-2">{c.empresa}</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">{c.resumen}</p>
+            <a
+              href={c.href}
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-xl font-semibold text-white bg-[#1e40af] hover:brightness-110 transition-all duration-200 shadow-sm hover:shadow-md"
+            >
+              Ver más
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

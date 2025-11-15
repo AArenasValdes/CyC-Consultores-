@@ -1,0 +1,45 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Areas from "@/components/inicio/Areas.astro";
+import HeroCursos from "@/components/cursos/HeroCursos.astro";
+import Beneficios from "@/components/cursos/Beneficios.astro";
+import ContactoCurso from "@/components/cursos/ContactoCurso.astro";
+import TestimonioCursos from "@/components/cursos/TestimonioCursos.astro";
+
+// Leemos el parámetro ?q de la URL
+const searchParams = Astro.url.searchParams;
+const q = searchParams.get("q") ?? "";
+---
+
+<Layout title="Cursos">
+  <HeroCursos
+    title="Cursos para desarrollar el potencial de tu equipo"
+    subtitle="Contamos con los estándares más altos del mercado, siendo una empresa certificada bajo la norma chilena de calidad NSH 22708-2015, lo que nos rige y obliga a buscar la excelencia tanto en el personal de planta como en nuestro cuerpo docente. Modalidades presencial, remoto y mixto."
+    breadcrumbHereLabel="Cursos"
+    searchAction="/cursos"
+    currentQuery={q}
+  />
+
+  <!-- Bloque de beneficios arriba de las áreas -->
+  <Beneficios />
+
+  <main class="bg-white">
+    <section class="pt-8 pb-16">
+      <div class="max-w-7xl mx-auto px-6 md:px-12">
+        {q && (
+          <p class="mb-4 text-sm text-slate-600">
+            Mostrando resultados para: <span class="font-semibold">"{q}"</span>
+          </p>
+        )}
+
+        <Areas variant="cursos" searchQuery={q} />
+      </div>
+    </section>
+
+    <!---- testimonios Cursos-->
+    <TestimonioCursos/>
+
+    <!-- CTA antes del footer -->
+    <ContactoCurso/>
+  </main>
+</Layout>

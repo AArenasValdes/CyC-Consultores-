@@ -1,0 +1,343 @@
+---
+import mineriaImg from "public/img/mineria/Mineria.jpg";
+import negociosImg from "public/img/negocios/Negocios.jpg";
+import finanzasImg from "public/img/finanzas/Finanzas.jpg";
+import educacionImg from "public/img/educacion/Educacion.jpg";
+import saludImg from "public/img/salud/Salud.jpg";
+import ofimaticaImg from "public/img/ofimatica/Ofimatica.jpg";
+import prevencionImg from "public/img/prevencion/Prevencion.jpg";
+import electricidadImg from "public/img/electricidad/Electricidad.jpg";
+import calidadImg from "public/img/calidad-alimentacion/Calidad.jpg";
+import forestalImg from "public/img/gestion-forestal/Gestion-Forestal.jpg";
+import imagenImg from "public/img/asesoria-empresa/Asesoria-Empresa.jpg";
+
+type Area = {
+  title: string;
+  href: string;
+  image: { src: string };
+  color: string;
+  specializationsCount?: number;
+  highlights?: string[];
+};
+
+// 👇 Props para reutilizar el componente en Home y en Cursos
+export interface Props {
+  variant?: "home" | "cursos";
+  showCTA?: boolean;
+  searchQuery?: string;
+}
+
+const { variant = "home", showCTA = true, searchQuery = "" } = Astro.props;
+const isCursos = variant === "cursos";
+
+// Textos dinámicos según la variante
+const title = isCursos
+  ? "Áreas de formación y cursos"
+  : "Áreas de especialización";
+
+const subtitle = isCursos
+  ? "Explora nuestras áreas y encuentra los cursos que mejor se ajustan a la realidad de tu empresa."
+  : "Formación diseñada para distintas industrias y necesidades.";
+
+const badgeLabel = isCursos ? "Catálogo de cursos" : "Especialización Premium";
+const buttonLabel = isCursos ? "Ver cursos del área" : "Ver área";
+
+// usamos el azul marino del Hero (#2563eb)
+const mainBlue = "from-[#2563eb]/10 to-[#2563eb]/5";
+
+const areas: Area[] = [
+  {
+    title: "Minería, Maquinaria Pesada y Construcción",
+    href: "/areas/mineria",
+    image: mineriaImg,
+    color: mainBlue,
+    specializationsCount: 15,
+    highlights: ["Operación segura", "Mantenimiento", "Gestión de faenas"],
+  },
+  {
+    title: "Negocios",
+    href: "/areas/negocios",
+    image: negociosImg,
+    color: mainBlue,
+    specializationsCount: 13,
+    highlights: ["Ventas", "Liderazgo", "Atención al cliente"],
+  },
+  {
+    title: "Finanzas, Legislación Laboral y Control de Gestión",
+    href: "/areas/finanzas",
+    image: finanzasImg,
+    color: mainBlue,
+    specializationsCount: 16,
+    highlights: ["Remuneraciones", "Cálculo de finiquitos", "Control de gestión"],
+  },
+  {
+    title: "Educación",
+    href: "/areas/educacion",
+    image: educacionImg,
+    color: mainBlue,
+    specializationsCount: 11,
+    highlights: ["Español para extranjeros nivel basico", "Resolución de conflictos"]
+  },
+  {
+    title: "Salud",
+    href: "/areas/salud",
+    image: saludImg,
+    color: mainBlue,
+    specializationsCount: 5,
+    highlights: ["Primeros auxilios y RCP", "Asistente de enfermeria","Cuidado de enfermo"]
+  },
+  {
+    title: "Ofimática",
+    href: "/areas/ofimatica",
+    image: ofimaticaImg,
+    color: mainBlue,
+    specializationsCount: 11,
+    highlights: ["Autocad", "Scrum", "Excel básico, intermedio, avanzado"]
+  },
+  {
+    title: "Prevención de Riesgos",
+    href: "/areas/prevencion",
+    image: prevencionImg,
+    color: mainBlue,
+    specializationsCount: 13,
+    highlights: ["Planificación y control de ejecucion de obras", "Responsabilida civil, penal en Mineria","Intensivo en prevención de riesgos"]
+  },
+  {
+    title: "Electricidad e Industrias",
+    href: "/areas/electricidad",
+    image: electricidadImg,
+    color: mainBlue,
+    specializationsCount: 10,
+    highlights: ["Operacion y mantención de bombas", "Control y comando eléctrico", "Electricidad y Electrónica industrial"]
+  },
+  {
+    title: "Calidad y Alimentación",
+    href: "/areas/calidad",
+    image: calidadImg,
+    color: mainBlue,
+    specializationsCount: 6,
+    highlights: ["Calidad Y Seguridad En La Elaboración De Alimentos", "análisis de Peligros y Puntos Críticos de Control  (HACCP)","Manipulación de alimentos"]
+  },
+  {
+    title: "Asesoría de imagen para Empresas",
+    href: "/areas/asesoria-empresa",
+    image: imagenImg,
+    color: mainBlue,
+    specializationsCount: 3,
+    highlights: ["Colorimetria", "Asesoria de uniformes","Imagen personal"]
+  },
+  {
+    title: "Gestión Forestal",
+    href: "/areas/gestion-forestal",
+    image: forestalImg,
+    color: mainBlue,
+    specializationsCount: 17,
+    highlights: ["Prevención de incendios forestales","Manejo Forestal Sostenible", "Manejo De Herramientas Y Maquinaria Forestal"]
+  },
+];
+
+const normalizedQuery = searchQuery.trim().toLowerCase();
+const filteredAreas = normalizedQuery
+  ? areas.filter((a) => a.title.toLowerCase().includes(normalizedQuery))
+  : areas;
+---
+
+<section
+  id="areas"
+  class={`relative mx-auto max-w-7xl px-6 md:px-12 py-20 overflow-hidden font-[Verdana,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif] ${
+    isCursos ? "bg-slate-50" : "bg-white"
+  }`}
+>
+  <header
+    class={`max-w-3xl mx-auto mb-16 space-y-4 ${
+      isCursos ? "text-left md:text-left" : "text-center"
+    }`}
+  >
+    <div
+      class={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#2563eb]/10 to-[#2563eb]/5 border border-[#2563eb]/20 ${
+        isCursos ? "" : "mx-auto"
+      }`}
+    >
+      <svg
+        class="w-5 h-5 text-[#2563eb]"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M13 10V3L4 14h7v7l9-11h-7z"
+        />
+      </svg>
+      <span class="text-sm font-semibold text-[#2563eb]">
+        {badgeLabel}
+      </span>
+    </div>
+
+    <h2 class="font-bold text-4xl md:text-5xl lg:text-6xl text-slate-900">
+      {title}
+    </h2>
+
+    <p
+      class={`text-slate-600 text-lg md:text-xl max-w-2xl leading-relaxed ${
+        isCursos ? "" : "mx-auto"
+      }`}
+    >
+      {subtitle}
+    </p>
+
+    <div
+      class={`flex items-center gap-2 pt-4 ${
+        isCursos ? "" : "justify-center"
+      }`}
+    >
+      <div class="h-px w-12 bg-gradient-to-r from-transparent to-[#2563eb]/40"></div>
+      <div class="w-2 h-2 rounded-full bg-[#2563eb]/60"></div>
+      <div class="h-px w-12 bg-gradient-to-l from-transparent to-[#2563eb]/40"></div>
+    </div>
+  </header>
+
+<div
+    class={`grid gap-8 sm:grid-cols-2 ${
+      isCursos ? "lg:grid-cols-3" : "lg:grid-cols-3"
+    }`}
+  >
+    {filteredAreas.map((a, index) => (
+      <article
+        class={`flex flex-col group relative rounded-2xl overflow-hidden border border-slate-200 bg-white hover:shadow-lg transition-all duration-400 ${
+          isCursos ? "hover:-translate-y-2" : "hover:-translate-y-1"
+        }`}
+        style={`animation: fadeInUp 0.6s ease-out ${index * 0.08}s both;`}
+      >
+        {/* Overlay color */}
+        <div
+          class={`absolute inset-0 bg-gradient-to-br ${a.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+        ></div>
+
+        {/* Imagen */}
+        <div class="relative h-48 w-full overflow-hidden">
+          <img
+            src={a.image.src}
+            alt={a.title}
+            loading="lazy"
+            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+          />
+          <div class="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/5 to-transparent pointer-events-none"></div>
+        </div>
+
+        {/* Contenido */}
+        <div class="relative p-6 flex flex-col flex-grow">
+          <h3 class="font-bold text-xl leading-tight min-h-14 text-slate-900">
+            {a.title}
+          </h3>
+
+          {/* Chips de especialidades (solo en modo cursos) */}
+          {isCursos && a.highlights && a.highlights.length > 0 && (
+            <ul class="mt-3 flex flex-wrap gap-1.5 ">
+              {a.highlights.slice(0, 3).map((tag) => (
+                <li class="text-[14px] px-2 py-1 rounded-full bg-slate-100 text-slate-700">
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {/* Métricas solo para la página de cursos */}
+          {isCursos && (
+            <div class="mt-4 flex items-center justify-between text-xs text-slate-500">
+              <div class="flex items-center gap-1.5">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-4 h-4 text-[#2563eb]"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 7h18M3 12h18M3 17h18"
+                  />
+                </svg>
+                <span class="text-sm">
+                  {a.specializationsCount
+                    ? `${a.specializationsCount} especializaciones`
+                    : "Especializaciones disponibles"}
+                </span>
+              </div>
+
+              <div class="hidden sm:flex items-center gap-1 text-sm">
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                <span>Presencial / online</span>
+              </div>
+            </div>
+          )}
+
+         {/* Botón principal */}
+          <div class="mt-auto pt-6  flex items-center justify-between">
+            <a
+              href={a.href}
+              class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-white
+                     bg-[#0b1a33] hover:brightness-110 transition-all duration-200 shadow-sm hover:shadow-md"
+            >
+              {buttonLabel}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-4 h-4 transition-transform duration-200"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m9 5 7 7-7 7"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  {showCTA && (
+    <div class="mt-16 text-center">
+      <div class="inline-flex flex-col sm:flex-row items-center gap-4 p-6 rounded-2xl bg-gradient-to-r from-[#2563eb]/10 to-[#2563eb]/5 border border-[#2563eb]/20">
+        <div class="text-left">
+          <h3 class="text-lg font-bold text-slate-900 mb-0.5">
+            ¿No encuentras lo que buscas?
+          </h3>
+          <p class="text-slate-600 text-sm">
+            {isCursos
+              ? "Diseñamos mallas completas y programas a medida para tu equipo."
+              : "Diseñamos programas personalizados para tu empresa."}
+          </p>
+        </div>
+        <a
+          href="/contacto"
+          class="px-5 py-3 rounded-xl font-semibold text-white bg-[#2563eb] hover:bg-[#1e4ed8] shadow-sm transition-colors"
+        >
+          Consultar ahora
+        </a>
+      </div>
+    </div>
+  )}
+</section>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(22px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

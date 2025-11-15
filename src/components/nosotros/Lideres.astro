@@ -1,0 +1,113 @@
+---
+interface Lider {
+  nombre: string;
+  cargo: string;
+  descripcion: string;
+  foto: string;
+}
+
+const {
+  title = "Nuestro Equipo de Liderazgo",
+  lideres = [
+    {
+      nombre: "Eric Contreras",
+      cargo: "Director Ejecutivo",
+      foto: "../public/logosCEOS/Eric.png",
+      descripcion: `Ingeniero de profesión, dedicado al rubro de las capacitaciones y consultorías a empresas desde el año 2008 a la fecha se ha desempeñado liderando diferentes consultoras. Esta experiencia lo ha convertido en un experto en la materia. Su pasión es conocer las necesidades de capacitación y formación que crecer a los equipos de trabajo.
+                  En la Actualidad es director ejecutivo de Consultores C&C.`,
+    },
+    {
+      nombre: "Macarena Cea",
+      cargo: "Community Manager",
+      foto: "../public/logosCEOS/maca.jpg",
+      descripcion: `Diseñadora de profesión, dedicada a las comunicaciones de Consultores C&C desde el año 2017 a la fecha.
+      En la actualidad se desempeña en el cargo de Community Manager de nuestra compañía.`,
+    },
+    {
+      nombre: "María del Rosario",
+      cargo: "Gerente de Administración y Finanzas",
+      foto: "../public/logosCEOS/maria-del-rosario.jpg",
+      descripcion: `Contador Auditor, con amplia trayectoria en la administración de Empresas de Capacitación desde el año 2005.
+      Experta en uso de franquicia tributaria para las capacitaciones y gestión de RRHH.
+      Actualmente se desempeña como Gerente de Administración y Finanzas de Consultores C&C.`,
+    },
+  ] as Lider[],
+} = Astro.props;
+---
+
+<section
+  class="py-12 bg-slate-50 font-[Verdana,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif] relative overflow-hidden"
+  aria-labelledby="equipo-liderazgo-title"
+>
+  <div class="max-w-7xl mx-auto px-6 md:px-12 relative">
+    <!-- Título -->
+    <header class="text-center mb-12">
+      <h2 id="equipo-liderazgo-title" class="text-3xl md:text-4xl font-bold text-[#0b1a33]">
+        {title}
+      </h2>
+      <div class="mt-3 h-[3px] w-16 sm:w-20 md:w-24 mx-auto bg-gradient-to-r from-[#facc15] to-[#0b1a33] rounded-full"></div>
+    </header>
+
+    <!-- Grid de líderes -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-12 md:gap-12 text-center md:text-left">
+      {lideres.map((l: Lider, i: number) => (
+        <article
+          class="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-500
+                 opacity-0 translate-y-6 scale-[0.98] motion-reduce:transition-none motion-reduce:transform-none
+                 relative z-10"
+          data-animate
+          style={`transition-delay: ${i * 200}ms`}
+        >
+          <div class="flex justify-center md:justify-start mb-6">
+            <img
+              src={l.foto}
+              alt={l.nombre}
+              loading="lazy"
+              decoding="async"
+              class="w-32 h-32 sm:w-36 sm:h-36 md:w-44 md:h-44 max-w-full object-cover rounded-full
+                     border-4 border-[#facc15]/70 shadow-md"
+            />
+          </div>
+
+          <h3 class="text-xl font-bold text-[#0b1a33] group-hover:text-[#facc15] transition-colors">
+            {l.nombre}
+          </h3>
+          <p class="text-slate-500 text-sm mb-4">{l.cargo}</p>
+
+          <p class="text-slate-700 text-sm leading-relaxed md:pr-4 md:max-w-prose mx-auto md:mx-0">
+            {l.descripcion}
+          </p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Script de animación accesible -->
+<script>
+  const cards = document.querySelectorAll("[data-animate]");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!reduce) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("opacity-100", "translate-y-0", "scale-100");
+            entry.target.classList.remove("opacity-0", "translate-y-6", "scale-[0.98]");
+            observer.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    cards.forEach((card) => observer.observe(card));
+  } else {
+    // Si el usuario prefiere menos movimiento, mostramos las tarjetas sin animación.
+    cards.forEach((card) => {
+      card.classList.remove("opacity-0", "translate-y-6", "scale-[0.98]");
+      card.classList.add("opacity-100", "translate-y-0", "scale-100");
+    });
+  }
+</script>

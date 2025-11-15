@@ -1,0 +1,143 @@
+---
+const BRAND = { navy: "#0b1a33", accent: "#facc15" };
+const CONTACT = {
+  email: "contacto@consultorescyc.cl",
+  whatsapp: "https://wa.me/56953976610",
+};
+---
+
+<div class="rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+  <!-- Encabezado -->
+  <div class="bg-slate-50 px-6 md:px-8 py-6 border-b border-slate-200">
+    <h2 class="text-2xl md:text-3xl font-bold text-[#0b1a33]">Formulario de Postulación</h2>
+    <p class="text-slate-600 mt-1">Completa tus datos y cuéntanos tu experiencia. Campos con * son obligatorios.</p>
+  </div>
+
+  <!-- Formulario -->
+  <form id="form-postulacion" class="px-6 md:px-8 py-8 grid grid-cols-1 md:grid-cols-2 gap-5" onsubmit="return window.handleJobSubmit(event)">
+    <!-- Nombres -->
+    <div>
+      <label class="block text-sm text-slate-600 mb-1">Nombres *</label>
+      <input required name="nombres" class="w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-[#0b1a33]" />
+    </div>
+
+    <!-- Apellidos -->
+    <div>
+      <label class="block text-sm text-slate-600 mb-1">Apellidos *</label>
+      <input required name="apellidos" class="w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-[#0b1a33]" />
+    </div>
+
+    <!-- Correo -->
+    <div>
+      <label class="block text-sm text-slate-600 mb-1">Correo electrónico *</label>
+      <input type="email" required name="correo" class="w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-[#0b1a33]" />
+    </div>
+
+    <!-- Teléfono -->
+    <div>
+      <label class="block text-sm text-slate-600 mb-1">Teléfono *</label>
+      <div class="flex">
+        <span class="inline-flex items-center px-3 rounded-l-lg border border-r-0 border-slate-300 bg-slate-50 text-slate-600">+56</span>
+        <input type="tel" required name="telefono" placeholder="9 1234 5678" class="w-full rounded-r-lg border border-slate-300 px-3 py-2 outline-none focus:border-[#0b1a33]" />
+      </div>
+    </div>
+
+    <!-- Especialidad -->
+    <div class="md:col-span-2">
+      <label class="block text-sm text-slate-600 mb-1">Especialidad *</label>
+      <input required name="especialidad" placeholder="Ej: Prevención de Riesgos, Ofimática, Electricidad…" class="w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-[#0b1a33]" />
+    </div>
+
+    <!-- REUF -->
+    <div class="md:col-span-2">
+      <span class="block text-sm text-slate-600 mb-1">¿Pertenece a REUF? *</span>
+      <div class="flex items-center gap-6">
+        <label class="inline-flex items-center gap-2">
+          <input type="radio" name="reuf" value="Sí" required class="accent-[#0b1a33]" />
+          <span class="text-slate-700">Sí</span>
+        </label>
+        <label class="inline-flex items-center gap-2">
+          <input type="radio" name="reuf" value="No" class="accent-[#0b1a33]" />
+          <span class="text-slate-700">No</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Experiencia -->
+    <div class="md:col-span-2">
+      <label class="block text-sm text-slate-600 mb-1">Cuéntanos tu experiencia *</label>
+      <textarea required name="experiencia" rows="6" class="w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-[#0b1a33]"></textarea>
+    </div>
+
+    <!-- (Opcional) CV PDF -->
+    <div class="md:col-span-2">
+      <label class="block text-sm text-slate-600 mb-1">Adjuntar CV (PDF, opcional)</label>
+      <input type="file" name="cv" accept="application/pdf" class="block w-full text-sm text-slate-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-[#0b1a33] file:text-white hover:file:bg-[#0a1730]"/>
+      <p class="text-xs text-slate-500 mt-1">Si tu sitio no tiene backend, comparte un enlace a tu CV (Drive/Dropbox) en el mensaje.</p>
+    </div>
+
+    <!-- Consentimiento -->
+    <div class="md:col-span-2 flex items-start gap-2">
+      <input required type="checkbox" id="consent" class="mt-1 accent-[#0b1a33]" />
+      <label for="consent" class="text-sm text-slate-600">Autorizo el uso de mis datos para fines de reclutamiento de CyC Consultores.</label>
+    </div>
+
+    <!-- Acciones -->
+    <div class="md:col-span-2 flex flex-wrap gap-3 pt-2">
+      <button type="submit"
+        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-white bg-[#0b1a33] hover:bg-[#0a1730] transition">
+        Enviar postulación
+      </button>
+      <a href={CONTACT.whatsapp} target="_blank"
+        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-[#0b1a33] border border-[#0b1a33] hover:bg-[#0b1a33] hover:text-white transition">
+        Postular por WhatsApp
+      </a>
+    </div>
+
+    <p id="job-msg" class="md:col-span-2 text-sm mt-2 text-slate-600 hidden"></p>
+  </form>
+</div>
+
+<script is:inline>
+  // Validación mínima de correo y formateo de teléfono CL
+  function normalizePhone(cl) {
+    return cl.replace(/[^\d]/g, "").replace(/^0+/, "");
+  }
+
+  window.handleJobSubmit = (e) => {
+    e.preventDefault();
+    const f = e.target;
+    const fd = new FormData(f);
+    const data = Object.fromEntries(fd.entries());
+
+    // saneo básico
+    const tel = normalizePhone((data.telefono || "").toString());
+    if (tel.length < 8) {
+      alert("Por favor ingresa un teléfono válido de Chile.");
+      return false;
+    }
+
+    // Construye correo (mailto)
+    const subject = encodeURIComponent(`Postulación - ${data.nombres} ${data.apellidos} (${data.especialidad})`);
+    const body = encodeURIComponent(
+`Nombres: ${data.nombres}
+Apellidos: ${data.apellidos}
+Correo: ${data.correo}
+Teléfono: +56 ${tel}
+Especialidad: ${data.especialidad}
+Pertenece a REUF: ${data.reuf || "-"}
+
+Experiencia:
+${data.experiencia}
+
+(Adjuntar CV en PDF o compartir enlace si corresponde)`
+    );
+
+    window.location.href = `mailto:${"contacto@consultorescyc.cl"}?subject=${subject}&body=${body}`;
+
+    const msg = document.getElementById("job-msg");
+    msg.textContent = "Abriendo tu cliente de correo… Si prefieres, envíanos esto por WhatsApp.";
+    msg.classList.remove("hidden");
+    return false;
+  };
+</script>

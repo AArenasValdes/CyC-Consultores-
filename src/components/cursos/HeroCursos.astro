@@ -1,0 +1,125 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+  breadcrumbHomeLabel?: string;
+  breadcrumbHereLabel?: string;
+  searchPlaceholder?: string;
+  searchAction?: string; // ej: "/cursos"
+  currentQuery?: string; // 👈 nueva
+}
+
+const {
+  title = "Catálogo de cursos CyC Consultores",
+  subtitle = "Programas prácticos y actualizados para fortalecer las competencias de tu equipo, supervisores y líderes.",
+  breadcrumbHomeLabel = "Inicio",
+  breadcrumbHereLabel = "Cursos",
+  searchPlaceholder = "Buscar cursos por nombre, área o temática...",
+  searchAction = "/cursos",
+  currentQuery = ""
+} = Astro.props;
+---
+
+<section class="relative w-full bg-[#0b1a33] text-white font-[Verdana,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif] overflow-hidden">
+  <!-- Fondo: degradados suaves -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_0%,transparent_40%)]"></div>
+    <div class="absolute -top-16 -right-10 w-[520px] h-[520px] rounded-full bg-white/5 blur-3xl"></div>
+    <div class="absolute -bottom-24 -left-14 w-[420px] h-[420px] rounded-full bg-white/5 blur-3xl"></div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-6 md:px-12 py-14 md:py-18">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="text-sm text-white/70">
+      <a href="/" class="hover:text-[#facc15] transition-colors">{breadcrumbHomeLabel}</a>
+      <span class="px-2">/</span>
+      <span class="text-white">{breadcrumbHereLabel}</span>
+    </nav>
+
+    <div class="mt-6 grid gap-10 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.1fr)] items-center">
+      <!-- Columna izquierda: título + subtítulo + buscador -->
+      <header class="max-w-3xl">
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
+          {title}
+        </h1>
+        <p class="mt-3 md:mt-4 text-base md:text-lg text-white/80 leading-relaxed">
+          {subtitle}
+        </p>
+
+        <!-- Buscador principal -->
+        <form
+          action={searchAction}
+          method="GET"
+          class="mt-6"
+        >
+          <div class="flex flex-col sm:flex-row gap-3 sm:items-center">
+            <div class="relative flex-1">
+              <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                <svg
+                  class="h-5 w-5 text-white/60"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-4.35-4.35m1.1-4.4a7 7 0 1 0-14 0 7 7 0 0 0 14 0Z" />
+                </svg>
+              </span>
+              <input
+                type="search"
+                name="q"
+                value={currentQuery}
+                placeholder={searchPlaceholder}
+                class="w-full rounded-xl border border-white/15 bg-white/10 pl-10 pr-4 py-2.5 text-sm md:text-base text-white placeholder:text-white/60
+                       focus:outline-none focus:ring-2 focus:ring-[#facc15] focus:border-transparent"
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="inline-flex justify-center items-center px-5 py-2.5 rounded-xl font-semibold text-[#0b1a33]
+                     bg-[#facc15] hover:brightness-110 transition-all shadow-[0_10px_24px_rgba(250,204,21,.35)]"
+            >
+              Buscar cursos
+            </button>
+          </div>
+
+          <p class="mt-2 text-xs md:text-sm text-white/65">
+            Puedes buscar por nombre del curso, área (Ej: “Prevención de Riesgos”) o palabras clave (Ej: “liderazgo”, “Excel”).
+          </p>
+        </form>
+      </header>
+
+      <!-- Columna derecha: “bloque de valor” (opcional, puro marketing) -->
+      <aside class="hidden lg:block">
+        <div class="rounded-2xl border border-white/15 bg-white/5 p-5 backdrop-blur-sm">
+          <h2 class="text-sm font-semibold text-[#facc15] tracking-wide uppercase">
+            Formación para empresas
+          </h2>
+          <p class="mt-2 text-sm text-white/80">
+            Portafolio con foco en resultados, cumplimiento normativo y desarrollo de habilidades blandas y técnicas.
+          </p>
+
+          <dl class="mt-4 grid grid-cols-2 gap-4 text-sm">
+            <div>
+              <dt class="text-white/60">Cursos activos</dt>
+              <dd class="text-2xl font-extrabold">+50</dd>
+            </div>
+            <div>
+              <dt class="text-white/60">Áreas de formación</dt>
+              <dd class="text-2xl font-extrabold">+10</dd>
+            </div>
+            <div>
+              <dt class="text-white/60">Modalidad</dt>
+              <dd class="font-semibold">Online, Presencial y Mixto</dd>
+            </div>
+            <div>
+              <dt class="text-white/60">Enfoque</dt>
+              <dd class="font-semibold">Práctico y aplicable</dd>
+            </div>
+          </dl>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

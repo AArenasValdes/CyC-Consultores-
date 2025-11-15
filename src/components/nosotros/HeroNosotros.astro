@@ -1,0 +1,77 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+  breadcrumbHomeLabel?: string;
+  breadcrumbHereLabel?: string;
+  ctaPrimaryHref?: string;   // ejemplo: "#timeline"
+  ctaPrimaryLabel?: string;  // ejemplo: "Ver historia"
+  ctaSecondaryHref?: string; // ejemplo: "/contacto"
+  ctaSecondaryLabel?: string;// ejemplo: "Agendar reunión"
+}
+
+const {
+  title = "Sobre CyC Consultores",
+  subtitle = "Comprometidos con la calidad, la mejora continua y el desarrollo de personas y empresas.",
+  breadcrumbHomeLabel = "Inicio",
+  breadcrumbHereLabel = "Sobre Nosotros",
+  ctaPrimaryHref = "#timeline",
+  ctaPrimaryLabel = "Ver historia",
+  ctaSecondaryHref = "/contacto",
+  ctaSecondaryLabel = "Agendar reunión",
+} = Astro.props;
+---
+
+<section class="relative w-full bg-[#0b1a33] text-white font-[Verdana,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif]">
+  <!-- Fondo: leve degradado + textura sutil -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_0%,transparent_35%)]"></div>
+    <div class="absolute -top-16 -right-10 w-[520px] h-[520px] rounded-full bg-white/5 blur-3xl"></div>
+    <div class="absolute -bottom-24 -left-14 w-[420px] h-[420px] rounded-full bg-white/5 blur-3xl"></div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-6 md:px-12 py-14 md:py-16">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="text-sm text-white/70">
+      <a href="/" class="hover:text-[#facc15] transition-colors">{breadcrumbHomeLabel}</a>
+      <span class="px-2">/</span>
+      <span class="text-white">{breadcrumbHereLabel}</span>
+    </nav>
+
+    <!-- Título y subtítulo -->
+    <header class="mt-4 max-w-3xl">
+      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
+        {title}
+      </h1>
+      <p class="mt-3 md:mt-4 text-base md:text-lg text-white/80 leading-relaxed">
+        {subtitle}
+      </p>
+    </header>
+
+    <!-- CTAs -->
+    <div class="mt-6 flex flex-wrap gap-3">
+      {ctaPrimaryHref && ctaPrimaryLabel ? (
+        <a
+          href={ctaPrimaryHref}
+          class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-[#0b1a33]
+                 bg-[#facc15] hover:brightness-110 transition-all shadow-[0_10px_24px_rgba(250,204,21,.35)]"
+        >
+          {ctaPrimaryLabel}
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7" />
+          </svg>
+        </a>
+      ) : null}
+
+      {ctaSecondaryHref && ctaSecondaryLabel ? (
+        <a
+          href={ctaSecondaryHref}
+          class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-semibold text-white
+                 border border-white/30 hover:bg-white/10 transition-all"
+        >
+          {ctaSecondaryLabel}
+        </a>
+      ) : null}
+    </div>
+  </div>
+</section>

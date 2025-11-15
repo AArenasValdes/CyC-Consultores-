@@ -1,0 +1,39 @@
+---
+import TimeLine from "@/components/nosotros/Timeline.astro";
+import Layout from "@/layouts/Layout.astro";
+import HeroNosotros from "@/components/nosotros/HeroNosotros.astro";
+import MisionVision from "@/components/nosotros/MisionVision.astro";
+import PalabrasDirector from "@/components/nosotros/PalabrasDirector.astro";
+import Lideres from "@/components/nosotros/Lideres.astro";
+---
+<Layout title="Sobre Nosotros">
+  <!-- …tu cabecera de página / hero interno… -->
+   <HeroNosotros
+    title="Sobre CyC Consultores"
+    subtitle="Comprometidos con la calidad, la mejora continua y el desarrollo de personas y empresas."
+    ctaPrimaryHref="#timeline"
+    ctaPrimaryLabel="Ver historia"
+    ctaSecondaryHref="/contacto"
+    ctaSecondaryLabel="Agendar reunión"
+  />
+  
+  <TimeLine
+    titulo="Línea de tiempo CyC Consultores"
+    subtitulo="Evolución y hitos que marcaron nuestro camino"
+  />
+
+    <!-- Más aire entre secciones si lo deseas -->
+  <div class="mt-12">
+    <MisionVision />
+  </div>
+  <!-- Palabras del Director (dark por defecto) -->
+  <div class="mt-12">
+    <PalabrasDirector
+      name="Eric Contreras"
+      role="Director General"
+      photoSrc="../public/logosCEOS/EricDirector.jpg"
+      message="En CyC Consultores hemos consolidado una empresa orientada a la excelencia, con un equipo comprometido, competente y humano.Desde mis inicios en el área de capacitación, he comprendido el valor transformador del conocimiento y cómo este impulsa a las personas a superarse.Nuestra misión es seguir siendo un referente en calidad y servicio, entregando soluciones efectivas que contribuyan al crecimiento profesional y humano de nuestros clientes y sus equipos."
+      variant= "dark"/>
+  </div>
+  <Lideres/>
+</Layout>

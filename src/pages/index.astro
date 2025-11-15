@@ -1,0 +1,33 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/inicio/Hero.astro';
+import '../styles/global.css';
+import StatsBar from '@/components/inicio/StatsBar.astro';
+import WhyUs from '@/components/inicio/WhyUs.astro';
+import Areas from "@/components/inicio/Areas.astro";
+import Commitment from '@/components/inicio/Commitment.astro';
+import ClientsMarkets from '@/components/inicio/ClientsMarkets.astro';
+import CTAInteremedio from '@/components/inicio/CTAIntermedio.astro';
+import Contacto from "@/components/inicio/Contacto.astro";
+import CasosExito from "@/components/inicio/CasosExito.astro";
+
+
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout title="CyC Consultores">
+	<main >
+		<Hero />
+		<StatsBar />
+		<WhyUs />
+		<Areas variant="home" />
+		<Commitment/>
+		<ClientsMarkets/>
+		<CasosExito/>
+		<CTAInteremedio/>
+		<Contacto />
+
+	</main>
+</Layout>

@@ -1,0 +1,41 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import HeroNosotros from "@/components/nosotros/HeroNosotros.astro";
+import ContactChannel from "@/components/contacto/ContactChannel.astro";
+import ContactForm from "@/components/contacto/ContactForm.astro";
+import ContactMap from "@/components/contacto/ContactMap.astro";
+import ContactFAQ from "@/components/contacto/ContactFAQ.astro";
+---
+
+<Layout title = "Contacto">
+    <HeroNosotros
+      title="Contacto"
+      subtitle="¿Deseas contactarte a la brevedad con nosotros?"
+      breadcrumbHereLabel = "Contactanos"
+      ctaPrimaryHref="#formulario"
+      ctaPrimaryLabel="Contactarse ahora"
+      ctaSecondaryHref="#preguntas"
+      ctaSecondaryLabel="Preguntas Frecuentes"
+    
+    />
+    </slot>
+    
+  <!-- Franja de canales rápidos -->
+  <ContactChannel />
+
+  <!-- Formulario + datos -->
+  <div id="formulario" class="mt-16">
+    <ContactForm />
+  </div>
+
+  <!-- Mapa / cobertura -->
+  <div class="mt-16">
+    <ContactMap />
+  </div>
+
+  <!-- Preguntas frecuentes opcionales -->
+  <div class="mt-16">
+    <ContactFAQ />
+  </div>
+</Layout>
+</Layout>

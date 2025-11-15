@@ -1,0 +1,121 @@
+---
+const brand = { navy: "#0b1a33", accent: "#facc15" };
+const contact = {
+  phone: "+56 9 5397 6610",
+  email: "contacto@consultorescyc.cl",
+  whatsapp: "https://wa.me/56953976610",
+  address: "Santiago, Chile",
+};
+---
+
+<section id="#formulario" class="bg-white font-[Verdana,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif]">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 grid gap-10 md:grid-cols-5 ">
+    <!-- Formulario -->
+    <div class="md:col-span-3 rounded-2xl border border-slate-200 p-6 shadow-sm">
+      <h3 class="text-2xl font-bold text-[#0b1a33] mb-2">Envíanos tu consulta</h3>
+      <p class="text-slate-600 mb-6">Te contactaremos con la mejor alternativa para tu empresa.</p>
+
+      <form id="contact-form" class="grid grid-cols-1 md:grid-cols-2 gap-4"
+            onsubmit="return window.handleContactSubmit(event)">
+        <div class="col-span-1">
+          <label class="block text-sm text-slate-600 mb-1">Nombre y Apellido</label>
+          <input required name="nombre" class="w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-[#0b1a33]" />
+        </div>
+
+        <div class="col-span-1">
+          <label class="block text-sm text-slate-600 mb-1">Empresa (opcional)</label>
+          <input name="empresa" class="w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-[#0b1a33]" />
+        </div>
+
+        <div class="col-span-1">
+          <label class="block text-sm text-slate-600 mb-1">Correo</label>
+          <input type="email" required name="email" class="w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-[#0b1a33]" />
+        </div>
+
+        <div class="col-span-1">
+          <label class="block text-sm text-slate-600 mb-1">Teléfono</label>
+          <input type="tel" name="telefono" class="w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-[#0b1a33]" />
+        </div>
+
+        <div class="col-span-2">
+          <label class="block text-sm text-slate-600 mb-1">Asunto</label>
+          <select name="asunto" class="w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-[#0b1a33]">
+            <option>Capacitaciones</option>
+            <option>Asesorías</option>
+            <option>Cotización</option>
+            <option>Otro</option>
+          </select>
+        </div>
+
+        <div class="col-span-2">
+          <label class="block text-sm text-slate-600 mb-1">Mensaje</label>
+          <textarea required name="mensaje" rows="5" class="w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-[#0b1a33]"></textarea>
+        </div>
+
+        <div class="col-span-2 flex items-start gap-2">
+          <input required type="checkbox" id="consent" class="mt-1" />
+          <label for="consent" class="text-sm text-slate-600">
+            Acepto ser contactado(a) por CyC Consultores y su política de privacidad.
+          </label>
+        </div>
+
+        <div class="col-span-2 flex flex-wrap gap-3 pt-2">
+          <button type="submit"
+                  class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-white bg-[#0b1a33] hover:bg-[#0a1730] transition">
+            Enviar consulta
+          </button>
+
+          <a href={contact.whatsapp} target="_blank"
+             class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-[#0b1a33] border border-[#0b1a33] hover:bg-[#0b1a33] hover:text-white transition">
+            WhatsApp directo
+          </a>
+        </div>
+
+        <p id="form-msg" class="col-span-2 text-sm mt-2 text-slate-600 hidden"></p>
+      </form>
+    </div>
+
+    <!-- Datos de contacto -->
+    <aside class="md:col-span-2 rounded-2xl border border-slate-200 p-6 shadow-sm bg-slate-50">
+      <h3 class="text-2xl font-bold text-[#0b1a33] mb-2">Datos de contacto</h3>
+      <ul class="space-y-3 text-slate-700">
+        <li><span class="font-semibold">Teléfono:</span> {contact.phone}</li>
+        <li><span class="font-semibold">Correo:</span> <a class="hover:text-[#facc15]" href={`mailto:${contact.email}`}>{contact.email}</a></li>
+        <li><span class="font-semibold">Ubicación:</span> {contact.address}</li>
+        <li><span class="font-semibold">Horario:</span> L–V 9:00–18:30</li>
+      </ul>
+      <div class="mt-6 p-4 rounded-xl border border-[#facc15]/30 bg-[#facc15]/10 text-[#0b1a33]">
+        ¿Caso urgente? Escríbenos por WhatsApp y te respondemos a la brevedad.
+      </div>
+    </aside>
+  </div>
+</section>
+
+<script>
+  declare global {
+    interface Window {
+      handleContactSubmit: (e: SubmitEvent) => boolean;
+    }
+  }
+
+  window.handleContactSubmit = (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target as HTMLFormElement);
+    const data = Object.fromEntries(fd.entries());
+
+    // OPCIÓN 1: mailto (rápida, sin backend)
+    const subject = encodeURIComponent(`[Contacto CyC] ${data.asunto ?? "Consulta"}`);
+    const body = encodeURIComponent(
+      `Nombre: ${data.nombre}\nEmpresa: ${data.empresa ?? "-"}\nCorreo: ${data.email}\nTeléfono: ${data.telefono ?? "-"}\n\nMensaje:\n${data.mensaje}`
+    );
+    window.location.href = `mailto:contacto@consultorescyc.cl?subject=${subject}&body=${body}`;
+
+    // feedback visual
+    const msg = document.getElementById("form-msg");
+    if (msg) {
+      msg.textContent = "Abriendo tu cliente de correo… Si prefieres, usa el botón de WhatsApp.";
+      msg.classList.remove("hidden");
+    }
+    return false;
+  };
+</script>

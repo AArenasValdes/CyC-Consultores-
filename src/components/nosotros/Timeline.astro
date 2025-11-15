@@ -1,0 +1,83 @@
+---
+interface Item {
+  year: string;
+  text: string;
+  icon: string; // nombre del icono
+}
+
+const {
+  titulo = "Nuestra historia",
+  subtitulo = "Hitos clave de CyC Consultores",
+  items = [
+    { year: "2015", icon: "user", text: "C&C nace por la necesidad de ayudar y orientar a las empresas en capacitación." },
+    { year: "2016", icon: "pin", text: "Se amplían las áreas de capacitación a Prevención de riesgos como también a Mkt y Finanzas" },
+    { year: "2017", icon: "users", text: "Se hace parte de programas sociales a través de Sence" },
+    { year: "2018", icon: "books", text: "Se logra realizar capacitaciones en regiones extremas como Magallanes y Punta arenas." },
+    { year: "2019", icon: "handshake", text: "Se logran alianzas estratégicas y con diferentes empresas proveedoras del rubro minero" },
+    { year: "2020", icon: "monitor", text: "A raíz de la pandemia mundial, se crea el Aula Virtual C&C, adaptando los cursos a la contingencia" },
+    { year: "2021", icon: "check", text: "Se destaca el logro de continuar capacitando a las personas tanto on line como asincrónico" },
+    { year: "2022", icon: "layers", text: "C&C regresa a la normalidad de Cursos presenciales. Se hace parte de ayuda a través de distintas fundaciones" },
+    { year: "2023", icon: "globe", text: "Innovación y nuevas alianzas: implementación de metodologías digitales. Expansión: apertura sucursal Antofagasta. Alianza estratégica internacional" },
+    { year: "2024", icon: "puzzle", text: "Proyección sobre objetivos y planes de la empresa. Expansión a nuevos mercados, introducción a nuevos servicios e implementación de IA. Programa de certificación propia" },
+    { year: "2025", icon: "chart", text: "Continuar creciendo junto a nuestros clientes, ofreciendo soluciones de calidad que se adaptan a sus necesidades y los estándares del mercado. Seguir brindando servicios que aseguran la satisfacción y la construcción de relaciones a largo plazo." },
+  ] as Item[],
+  navy = "#0b1a33",
+  accent = "#facc15",
+  id = "timeline",
+} = Astro.props;
+
+// Función para obtener el SVG del icono
+const getIcon = (name: string) => {
+  const icons: Record<string, string> = {
+    user: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />',
+    pin: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />',
+    users: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />',
+    books: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />',
+    handshake: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />',
+    monitor: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />',
+    check: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />',
+    layers: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />',
+    globe: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />',
+    puzzle: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />',
+    chart: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />',
+  };
+  return icons[name] || icons.user;
+};
+---
+
+<section id={id} class="py-24 mt-18 bg-gradient-to-b from-slate-50 to-white font-[Verdana,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif]">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <header class="text-center mb-10">
+      <h2 class="text-3xl md:text-4xl font-bold" style={`color:${navy}`}>{titulo}</h2>
+      <p class="mt-2 text-slate-600">{subtitulo}</p>
+      <div class="mt-3 h-[3px] w-20 mx-auto rounded-full" style={`background: linear-gradient(90deg, ${accent}, ${navy})`}></div>
+    </header>
+
+    <!-- GRID: base 1, sm:2, md:3, lg:4 -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {items.map((it: Item) => (
+        <article class="group rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden flex flex-col">
+          <!-- Header: Año + icono -->
+          <div class="flex items-center gap-3 px-5 pt-5">
+            <span class="inline-flex items-center justify-center px-3 py-1.5 rounded-full bg-gradient-to-r from-[#facc15] to-[#fde047] text-[#0b1a33] text-sm font-bold">
+              {it.year}
+            </span>
+            <div class="ml-auto w-10 h-10 rounded-full bg-[#0b1a33] flex items-center justify-center border-2 border-[#facc15]/60">
+              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" set:html={getIcon(it.icon)} />
+            </div>
+          </div>
+
+          <!-- Texto -->
+          <div class="p-5 flex-1">
+            <p class="text-slate-700 text-sm leading-relaxed">
+              {it.text}
+            </p>
+          </div>
+
+          <!-- Línea inferior corporativa -->
+          <div class="h-1" style={`background: linear-gradient(90deg, ${accent}, ${navy})`}></div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
