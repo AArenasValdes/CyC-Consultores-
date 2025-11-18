@@ -18,7 +18,7 @@ export const SALUD_ESPECIALIDADES: Especialidad[] = [
   {
     id: "asistente-en-enfermeria",
     title: "Asistente En Enfermería",
-    shortDesc: "Formación para desempeñarse en el campo de la salud: conocimientos de anatomía, fisiología y atención básica de enfermería. :contentReference[oaicite:1]{index=1}",
+    shortDesc: "Formación para desempeñarse en el campo de la salud: conocimientos de anatomía, fisiología y atención básica de enfermería.",
     image: "/img/salud/Asistente-en-enfermeria__.jpg",
     target: "Personas que desean integrarse al área de salud como asistentes, técnicos de apoyo o auxiliares de enfermería.",
     benefits: [
@@ -45,7 +45,7 @@ export const SALUD_ESPECIALIDADES: Especialidad[] = [
    {
     id: "plasma-rico-en-plaquetas",
     title: "Plasma Rico En Plaquetas",
-    shortDesc: "Programa de formación en técnicas de extracción y aplicación de plasma rico en plaquetas para salud y estética. :contentReference[oaicite:2]{index=2}",
+    shortDesc: "Programa de formación en técnicas de extracción y aplicación de plasma rico en plaquetas para salud y estética.",
     image: "/img/salud/Plasma-rico-en-plaquetas__.jpg",
     target: "Profesionales de salud, esteticistas, clínicas de medicina regenerativa, dermatólogos/as y personal técnico afín.",
     benefits: [

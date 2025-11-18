@@ -1,0 +1,157 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import HeroNosotros from "@/components/nosotros/HeroNosotros.astro";
+---
+
+<Layout title="Noticias - CyC Consultores">
+  <HeroNosotros
+    title="Noticias y Novedades"
+    subtitle="Mantente al día con las últimas actualizaciones de CyC Consultores"
+    breadcrumbHereLabel="Noticias"
+    ctaPrimaryHref="https://www.instagram.com/cycconsultores.chile/"
+    ctaPrimaryLabel="Síguenos en Instagram"
+    ctaSecondaryHref="/contacto"
+    ctaSecondaryLabel="Contáctanos"
+  />
+
+  <section class="bg-white py-16 font-[Verdana,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif]">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+          Publicaciones de Instagram
+        </h2>
+        <p class="text-base md:text-lg text-slate-600 max-w-2xl mx-auto">
+          Síguenos en Instagram para estar al día con nuestras últimas capacitaciones, 
+          proyectos y novedades del mundo empresarial.
+        </p>
+      </div>
+
+<!-- Feed de Instagram -->
+<div class="bg-slate-50 rounded-2xl border border-slate-200 p-8 md:p-12">
+  <div class="flex items-center justify-between mb-6">
+    <h3 class="text-xl font-semibold text-slate-900">
+      Últimas publicaciones de Instagram
+    </h3>
+    <a 
+      href="https://www.instagram.com/cycconsultores.chile/" 
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-sm font-semibold text-[#2563eb] hover:text-blue-700"
+    >
+      Ver perfil completo
+    </a>
+  </div>
+
+  <!-- Contenedor del widget Elfsight -->
+  <div class="overflow-hidden rounded-2xl border border-slate-200 p-4 bg-white">
+    <div 
+      class="elfsight-app-be948b0a-4b16-4913-aeb1-70b51991fc9e" 
+      data-elfsight-app-lazy
+    ></div>
+  </div>
+</div>
+
+<!-- Script de Elfsight -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+
+        <!-- Botón para ver más en Instagram -->
+        <div class="text-center mt-8">
+          <a 
+            href="https://www.instagram.com/cycconsultores.chile/" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg hover:shadow-xl"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M7.75 2A5.75 5.75 0 0 0 2 7.75v8.5A5.75 5.75 0 0 0 7.75 22h8.5A5.75 5.75 0 0 0 22 16.25v-8.5A5.75 5.75 0 0 0 16.25 2h-8.5zM4.5 7.75A3.25 3.25 0 0 1 7.75 4.5h8.5a3.25 3.25 0 0 1 3.25 3.25v8.5a3.25 3.25 0 0 1-3.25 3.25h-8.5A3.25 3.25 0 0 1 4.5 16.25v-8.5z"/>
+              <path d="M12 7.25a4.75 4.75 0 1 0 0 9.5 4.75 4.75 0 0 0 0-9.5zM12 14.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zM17.5 6.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+            </svg>
+            Ver más en Instagram
+          </a>
+        </div>
+      </div>
+
+      <!-- Información adicional -->
+      <div class="mt-12 grid md:grid-cols-2 gap-8">
+        <div class="bg-white rounded-xl border border-slate-200 p-6">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0">
+              <svg class="w-8 h-8 text-[#2563eb]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-slate-900 mb-2">
+                Mantente informado
+              </h3>
+              <p class="text-sm text-slate-600">
+                Publicamos regularmente contenido sobre capacitaciones, 
+                consejos profesionales y casos de éxito de nuestros clientes.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl border border-slate-200 p-6">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0">
+              <svg class="w-8 h-8 text-[#2563eb]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-slate-900 mb-2">
+                Únete a la conversación
+              </h3>
+              <p class="text-sm text-slate-600">
+                Comenta nuestras publicaciones, comparte tus experiencias 
+                y conecta con otros profesionales del sector.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Aquí puedes integrar la API de Instagram si tienes acceso
+    // Por ahora, mostraremos un mensaje alternativo
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      const feedContainer = document.getElementById('instagram-feed');
+      
+      if (feedContainer) {
+        // Simulación de carga (reemplaza esto con tu API de Instagram)
+        setTimeout(() => {
+          feedContainer.innerHTML = `
+            <div class="col-span-full text-center py-12">
+              <svg class="w-16 h-16 mx-auto text-slate-400 mb-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M7.75 2A5.75 5.75 0 0 0 2 7.75v8.5A5.75 5.75 0 0 0 7.75 22h8.5A5.75 5.75 0 0 0 22 16.25v-8.5A5.75 5.75 0 0 0 16.25 2h-8.5zM4.5 7.75A3.25 3.25 0 0 1 7.75 4.5h8.5a3.25 3.25 0 0 1 3.25 3.25v8.5a3.25 3.25 0 0 1-3.25 3.25h-8.5A3.25 3.25 0 0 1 4.5 16.25v-8.5z"/>
+                <path d="M12 7.25a4.75 4.75 0 1 0 0 9.5 4.75 4.75 0 0 0 0-9.5zM12 14.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zM17.5 6.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+              </svg>
+              <h3 class="text-xl font-semibold text-slate-900 mb-2">
+                Visita nuestro Instagram
+              </h3>
+              <p class="text-slate-600 mb-6 max-w-md mx-auto">
+                Para ver todas nuestras publicaciones y contenido exclusivo, 
+                visítanos directamente en Instagram.
+              </p>
+              <a 
+                href="https://www.instagram.com/cycconsultores.chile/" 
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 transition-all"
+              >
+                Ir a Instagram
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          `;
+        }, 1500);
+      }
+    });
+  </script>
+</Layout>

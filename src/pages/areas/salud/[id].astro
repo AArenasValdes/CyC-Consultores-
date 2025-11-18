@@ -1,6 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { SALUD_ESPECIALIDADES } from "@/data/areas/salud";
+import { SALUD_ESPECIALIDADES } from "@/data/areas/salud.ts";
 
 export function getStaticPaths() {
   return SALUD_ESPECIALIDADES.map((curso) => ({

@@ -1,0 +1,331 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { ELECTRICIDAD_ESPECIALIDADES } from "@/data/areas/electricidad.ts";
+
+export function getStaticPaths() {
+  return ELECTRICIDAD_ESPECIALIDADES.map((curso) => ({
+    params: { id: curso.id },
+  }));
+}
+
+const { id } = Astro.params;
+const curso = ELECTRICIDAD_ESPECIALIDADES.find((c) => c.id === id);
+
+if (!curso) {
+  throw new Error(`Curso de Electricidad no encontrado para id: ${id}`);
+}
+---
+
+<Layout title={curso.title}>
+  <!-- HERO -->
+  <section class="relative w-full bg-[#0b1a33] text-white font-[Verdana,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif] overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_0%,transparent_40%)]"></div>
+      <div class="absolute -top-16 -right-10 w-[520px] h-[520px] rounded-full bg-white/5 blur-3xl"></div>
+      <div class="absolute -bottom-24 -left-14 w-[420px] h-[420px] rounded-full bg-white/5 blur-3xl"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-16">
+      <nav aria-label="breadcrumb" class="text-sm text-white/70">
+        <a href="/" class="hover:text-[#facc15] transition-colors">Inicio</a>
+        <span class="px-2">/</span>
+        <a href="/cursos" class="hover:text-[#facc15] transition-colors">Cursos</a>
+        <span class="px-2">/</span>
+        <a href="/areas/electricidad" class="hover:text-[#facc15] transition-colors">Electricidad e Industrias</a>
+        <span class="px-2">/</span>
+        <span class="text-white">Curso</span>
+      </nav>
+
+      <div class="mt-8 grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] items-center">
+        <!-- Columna izquierda: Info -->
+        <div>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#facc15] text-[#0b1a33] text-xs font-bold mb-4">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+            </svg>
+            Área Electricidad e Industrias
+          </span>
+          
+          <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
+            {curso.title}
+          </h1>
+          <p class="mt-4 text-base md:text-lg text-white/90 leading-relaxed">
+            {curso.shortDesc}
+          </p>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a
+              href="#formulario"
+              class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-[#0b1a33] bg-[#facc15] hover:brightness-110 transition-all shadow-[0_10px_24px_rgba(250,204,21,.35)]"
+            >
+              Solicitar cotización
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+            <a
+              href="/contacto"
+              class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white border-2 border-white/30 hover:bg-white/10 transition-all"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+              Hablar con asesor
+            </a>
+          </div>
+        </div>
+
+        <!-- Columna derecha: Imagen del curso -->
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20">
+          <img
+            src={curso.image}
+            alt={curso.title}
+            class="w-full h-auto aspect-4/3 object-cover"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="bg-slate-50 py-12">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      
+      <!-- Información del curso (ancho completo) -->
+      <div class="max-w-4xl mx-auto space-y-8">
+          
+        <!-- ¿En qué consiste? -->
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm">
+          <div class="flex items-start gap-3 mb-4">
+            <div class="p-2 rounded-lg bg-[#0b1a33]/5">
+              <svg class="w-6 h-6 text-[#0b1a33]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-2xl font-bold text-slate-900">¿En qué consiste este curso?</h2>
+              <p class="text-sm text-slate-600 mt-1">Descripción general del programa</p>
+            </div>
+          </div>
+          <p class="text-base text-slate-700 leading-relaxed">
+            {curso.shortDesc}
+          </p>
+        </section>
+
+        {/* Dirigido a */}
+        {curso.target && (
+          <section class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm">
+            <div class="flex items-start gap-3 mb-4">
+              <div class="p-2 rounded-lg bg-[#0b1a33]/5">
+                <svg class="w-6 h-6 text-[#0b1a33]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-slate-900">Dirigido a</h3>
+                <p class="text-sm text-slate-600 mt-1">Perfil de participantes</p>
+              </div>
+            </div>
+            <p class="text-base text-slate-700 leading-relaxed">{curso.target}</p>
+          </section>
+        )}
+
+        {/* Ventajas */}
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm">
+          <div class="flex items-start gap-3 mb-4">
+            <div class="p-2 rounded-lg bg-[#0b1a33]/5">
+              <svg class="w-6 h-6 text-[#0b1a33]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-slate-900">Beneficios clave</h3>
+              <p class="text-sm text-slate-600 mt-1">Ventajas de tomar este curso</p>
+            </div>
+          </div>
+          <ul class="space-y-3">
+            {curso.benefits.map((benefit) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-[#facc15] flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-base text-slate-700 leading-relaxed">{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
+
+      <!-- FORMULARIO DE COTIZACIÓN -->
+      <section class="mt-16 bg-white rounded-2xl border-2 border-[#0b1a33]/10 shadow-xl overflow-hidden">
+        <div class="bg-gradient-to-r from-[#0b1a33] to-[#0b1a33]/90 text-white px-6 md:px-8 py-8 text-center">
+          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#facc15] mb-4">
+            <svg class="w-8 h-8 text-[#0b1a33]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl md:text-3xl font-bold mb-2">Solicitar Cotización</h3>
+          <p class="text-white/90 text-sm md:text-base">
+            Curso: <span class="font-semibold">{curso.title}</span>
+          </p>
+        </div>
+
+        <div id="formulario" class="px-6 md:px-8 py-8">
+          <form class="grid gap-6 md:grid-cols-2">
+            {/* Nombre Solicitante */}
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-1.5">
+                Nombre Solicitante <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                required
+                placeholder="Juan Pérez"
+                class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#0b1a33] focus:border-transparent"
+              />
+            </div>
+
+            {/* Correo Electrónico */}
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-1.5">
+                Correo Electrónico <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="email"
+                required
+                placeholder="juan.perez@empresa.cl"
+                class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#0b1a33] focus:border-transparent"
+              />
+            </div>
+
+            {/* Nombre Empresa */}
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-1.5">
+                Nombre Empresa <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                required
+                placeholder="Empresa Ejemplo S.A."
+                class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#0b1a33] focus:border-transparent"
+              />
+            </div>
+
+            {/* Teléfono Contacto */}
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-1.5">
+                Teléfono Contacto <span class="text-red-500">*</span>
+              </label>
+              <div class="flex gap-2">
+                <input
+                  type="text"
+                  value="+56"
+                  disabled
+                  class="w-16 rounded-lg border border-slate-300 px-3 py-2.5 text-sm bg-slate-50 text-slate-600"
+                />
+                <input
+                  type="tel"
+                  required
+                  placeholder="912345678"
+                  class="flex-1 rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#0b1a33] focus:border-transparent"
+                />
+              </div>
+            </div>
+
+            {/* Método de contacto */}
+            <div class="md:col-span-2">
+              <label class="block text-sm font-semibold text-slate-700 mb-2">
+                Método de contacto <span class="text-red-500">*</span>
+              </label>
+              <div class="flex flex-wrap gap-4">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" class="w-4 h-4 rounded border-slate-300 text-[#0b1a33] focus:ring-[#0b1a33]" />
+                  <span class="text-sm text-slate-700">Llamada Telefónica</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" class="w-4 h-4 rounded border-slate-300 text-[#0b1a33] focus:ring-[#0b1a33]" />
+                  <span class="text-sm text-slate-700">WhatsApp</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" class="w-4 h-4 rounded border-slate-300 text-[#0b1a33] focus:ring-[#0b1a33]" />
+                  <span class="text-sm text-slate-700">Correo Electrónico</span>
+                </label>
+              </div>
+            </div>
+
+            {/* Cantidad de Alumnos */}
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-1.5">
+                Cantidad de Alumnos <span class="text-red-500">*</span>
+              </label>
+              <select
+                required
+                class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#0b1a33] focus:border-transparent"
+              >
+                <option value="">- Seleccionar cantidad -</option>
+                <option value="1-5">1 a 5 personas</option>
+                <option value="6-10">6 a 10 personas</option>
+                <option value="11-20">11 a 20 personas</option>
+                <option value="21-50">21 a 50 personas</option>
+                <option value="50+">Más de 50 personas</option>
+              </select>
+            </div>
+
+            {/* Modalidad */}
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-1.5">
+                Modalidad <span class="text-red-500">*</span>
+              </label>
+              <select
+                required
+                class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#0b1a33] focus:border-transparent"
+              >
+                <option value="">- Seleccionar modalidad -</option>
+                <option value="presencial">Presencial</option>
+                <option value="online">Online (remoto)</option>
+                <option value="mixto">Mixto (híbrido)</option>
+              </select>
+            </div>
+
+            {/* Comentario */}
+            <div class="md:col-span-2">
+              <label class="block text-sm font-semibold text-slate-700 mb-1.5">
+                ¿Desea incluir algún comentario o requerimiento?
+              </label>
+              <textarea
+                rows={4}
+                placeholder="Escriba aquí cualquier comentario adicional..."
+                class="w-full rounded-lg border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#0b1a33] focus:border-transparent resize-none"
+              ></textarea>
+            </div>
+
+            {/* reCAPTCHA */}
+            <div class="md:col-span-2">
+              <div class="bg-slate-50 border-2 border-slate-200 rounded-lg p-4 text-center">
+                <p class="text-xs text-slate-500">reCAPTCHA aquí</p>
+              </div>
+            </div>
+
+            {/* Botón enviar */}
+            <div class="md:col-span-2">
+              <button
+                type="submit"
+                class="w-full inline-flex justify-center items-center gap-2 px-6 py-4 rounded-xl font-bold text-white bg-[#0b1a33] hover:bg-[#0b1a33]/90 transition-all shadow-lg hover:shadow-xl text-lg"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+                Enviar Solicitud
+              </button>
+              <p class="text-xs text-center text-slate-500 leading-relaxed mt-3">
+                Al enviar este formulario aceptas que CyC Consultores se ponga en contacto contigo para coordinar la cotización.
+              </p>
+            </div>
+          </form>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</Layout>

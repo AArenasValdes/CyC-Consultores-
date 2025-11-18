@@ -12,7 +12,7 @@ const isActive = (path: string) => {
 
 // Clases para links activos e inactivos
 const getLinkClass = (path: string, hasDropdown = false) => {
-  const baseClass = "px-3 lg:px-5 py-4 text-base lg:text-lg font-medium transition-colors rounded-md";
+  const baseClass = "px-3 lg:px-5 py-4 text-sm lg:text-base font-medium transition-colors rounded-md";
   const activeClass = "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-gray-800";
   const inactiveClass = "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800";
   
@@ -28,28 +28,36 @@ const getLinkClass = (path: string, hasDropdown = false) => {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyC Consultores - Header Fixed</title>
+    <title>CyC Consultores - Header Responsivo</title>
 </head>
 <body class="bg-gray-50">
 
 <header class="fixed top-0 left-0 right-0 w-full bg-white dark:bg-gray-900 shadow-md z-50" id="navbar">
    <div class="w-full px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-20 lg:h-24">
-            <!-- Logo a la izquierda - FIXED -->
-            <div class="flex-shrink-4 ml-6 lg:mr-12">
-                <a href="/" class="text-xl font-extrabold leading-none text-gray-900 md:text-2xl lg:text-3xl dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                    <img src="/public/logoEmpresa/Logo-cyc.png" alt="CyC Consultores"  class="h-18 w-auto"/>
+        <div class="flex items-center justify-between h-20 lg:h-24 xl:h-24">
+       <!-- Logo a la izquierda - SVG SIEMPRE NÍTIDO -->
+            <div class="flex-shrink-0">
+                <a href="/" class="block" aria-label="Ir a página de inicio">
+                    <img 
+                        src="/logoEmpresa/logo-cyc.svg" 
+                        alt="CyC Consultores - Formación y Asesoría Empresarial" 
+                        class="h-14 sm:h-16 md:h-18 lg:h-20 xl:h-24 w-auto"
+                        loading="eager"
+                        width="200"
+                        height="70"
+                    />
                 </a>
             </div>
             
- <!-- Barra de navegación a la derecha - FIXED -->
-<nav class="hidden md:flex items-center space-x-1 lg:space-x-6" id="main-nav">
-    <!-- Inicio -->
-    <div class="relative group">
-        <a href="/" class={getLinkClass('/')}>
-            Inicio
-        </a>
-    </div>
+            <!-- Barra de navegación a la derecha-->
+            <nav class="hidden xl:flex items-center space-x-4 lg:space-x-6">
+
+                <!-- Inicio -->
+                <div class="relative group">
+                    <a href="/" class={getLinkClass('/')}>
+                        Inicio
+                    </a>
+                </div>
 <!-- Cursos - con dropdown (hover en desktop, click navega) -->
 <div class="relative group" data-dropdown>
   <a href="/cursos" class={getLinkClass('/cursos', true)} aria-haspopup="true" aria-expanded="false">
@@ -76,15 +84,15 @@ const getLinkClass = (path: string, hasDropdown = false) => {
                     </svg>
                 </a>
                 
-                <!-- CAMBIO 3: Agregué "flex flex-col" al submenu y quité "uppercase" mal ubicado -->
+                <!-- Especialidades -->
                 <div class="uppercase absolute left-[calc(100%+0.25rem)] top-0 w-96 bg-white dark:bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover/mineria:opacity-100 group-hover/mineria:visible transition-all duration-200 border border-gray-200 dark:border-gray-700 flex flex-col">
                     
-                    <!-- CAMBIO 4: Agregué "flex-shrink-0" y quité "sticky" (ya no es necesario) -->
+                    <!--Submenu de especialidades  -->
                     <div class="px-4 py-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 flex-shrink-0">
                         <h3 class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Especialidades</h3>
                     </div>
                     
-                    <!-- CAMBIO 5: Agregué "flex-1" para que ocupe el espacio disponible -->
+                    <!-- Submenu desplegables -->
                     <div class="uppercase py-1 flex-1 overflow-y-auto" style="max-height: 500px;">
                         <a href="/areas/mineria/hipobaria-intermitente-cronica" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             Hipobaria Intermitente Crónica a Gran Altitud
@@ -92,10 +100,10 @@ const getLinkClass = (path: string, hasDropdown = false) => {
                         <a href="/areas/mineria/sistemas-gestion-mineria" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             Manipulación, Transporte y Manejo de Sustancias Peligrosas
                         </a>
-                        <a href="/areas/mineria/trabajo-altura-rescate" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/mineria/trabajo-en-altura-y-rescate-ecf2" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             Trabajo en Altura y Rescate (Estándar Norma ECF2)
                         </a>
-                        <a href="/areas/mineria/manejo-defensivo-prevencion" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/mineria/manejo-defensivo-y-prevencion-de-accidentes" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             Manejo Defensivo y Prevención de Accidentes
                         </a>
                         <a href="/areas/mineria/responsabilidad-civil-penal" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
@@ -209,52 +217,50 @@ const getLinkClass = (path: string, hasDropdown = false) => {
                         <h3 class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Especialidades</h3>
                     </div>
                     <div class="py-1 max-h-[500px] overflow-y-auto">
-                        <a href="/areas/finanzas/finanzas" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/finanzas/norma-iso-45000-2018" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             NORMA ISO 45.000 – 2018
                         </a>
-                        <a href="/cursos/finanzas/finanzas" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/finanzas/contabilidad-basica" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             CONTABILIDAD BÁSICA
                         </a>
-                        <a href="/cursos/finanzas/trabajo-altura-rescate" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/finanzas/cobranza-efectiva" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             COBRANZA EFECTIVA
                         </a>
-                        <a href="/cursos/finanzas/manejo-defensivo-prevencion" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/finanzas/administracion-edificios-condominios" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             ADMINISTRACIÓN DE EDIFICIOS Y CONDOMINIOS
                         </a>
-                        <a href="/cursos/finanzas/responsabilidad-civil-penal" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/finanzas/nch-2728-2015" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             NCH 2728 – 2015
                         </a>
-                        <a href="/cursos/finanzas/manejo-defensivo-vehiculos" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/finanzas/evaluacion-de-proyectos" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             EVALUACIÓN DE PROYECTOS
                         </a>
-                        <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/finanzas/legislacion-laboral-tributaria" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             LEGISLACIÓN LABORAL Y TRIBUTARIA
                         </a>
-                        <a href="/cursos/finanzas/planificacion-control-obras" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/finanzas/gestion-de-talentos" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             GESTIÓN DE TALENTOS
                         </a>
-                        <a href="/cursos/finanzas/montaje-seguridad-andamios" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/finanzas/operacion-renta" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             OPERACIÓN RENTA
                         </a>
-                        <a href="/cursos/finanzas/manejo-mantencion-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/finanzas/norma-ifrs-niif" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             NORMA IFRS/NIIF
                         </a>
-                        <a href="/cursos/finanzas/manejo-mantencion-grua-horquilla" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/finanzas/administracion-bodegas-inventario" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             ADMINISTRACIÓN Y CONTROL DE BODEGAS E INVENTARIO
                         </a>
-                        <a href="/cursos/finanzas/operacion-grua-alza-hombre" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
-                            NORMA ISO 9000-2015
-                        </a>
-                        <a href="/cursos/finanzas/manejo-4x4-alta-montana" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        
+                        <a href="/areas/finanzas/gestion-de-procesos" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             GESTIÓN DE PROCESOS
                         </a>
-                        <a href="/cursos/finanzas/manejo-4x4-alta-montana" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/finanzas/control-de-gestion" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             CONTROL DE GESTIÓN
                         </a>
-                        <a href="/cursos/finanzas/manejo-4x4-alta-montana" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/finanzas/accidentes-laborales-responsabilidad" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             ACCIDENTES LABORALES Y RESPONSABILIDAD CIVIL Y PENAL
                         </a>
-                        <a href="/cursos/finanzas/manejo-4x4-alta-montana" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/finanzas/calculo-de-remuneraciones" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             CALCULO DE REMUNERACIONES
                         </a>
                     </div>
@@ -262,9 +268,9 @@ const getLinkClass = (path: string, hasDropdown = false) => {
             </div>
             
 
-    <!-- Edudacion - con submenu -->
+    <!-- Educacion - con submenu -->
     <div class="group/educacion">
-        <a href="/cursos/educacion" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+        <a href="/areas/educacion" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
         <span class= "uppercase" "flex-1">educación</span>
         <svg class="ml-2 h-4 w-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -277,49 +283,49 @@ const getLinkClass = (path: string, hasDropdown = false) => {
                         <h3 class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Especialidades</h3>
                         </div>
                             <div class="py-1 max-h-[500px] overflow-y-auto">
-                        <a href="/cursos/finanzas/finanzas" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/educacion/inspector-educacional" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             INSPECTOR EDUCACIONAL
                         </a>
-                        <a href="/cursos/finanzas/finanzas" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/educacion/matematica-en-el-aula" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             MATEMÁTICA EN EL AULA
                         </a>
-                        <a href="/cursos/finanzas/trabajo-altura-rescate" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/educacion/neurociencia-desarrollo-aprendizaje" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             NEUROCIENCIA PARA EL DESARROLLO DEL APRENDIZAJE
                         </a>
-                        <a href="/cursos/finanzas/manejo-defensivo-prevencion" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/educacion/mediacion-familiar" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             MEDIACIÓN FAMILIAR
                         </a>
-                        <a href="/cursos/finanzas/responsabilidad-civil-penal" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/educacion/elaboracion-instrumentos-evaluacion" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             ELABORACIÓN DE INSTRUMENTOS DE EVALUACIÓN
                         </a>
-                        <a href="/cursos/mineria/manejo-defensivo-vehiculos" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/educacion/chino-mandarin-ingles" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             EDUCACIÓN EN CHINO MANDARÍN E INGLÉS
                         </a>
-                        <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/educacion/espanol-extranjeros-basico" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             ESPAÑOL PARA EXTRANJEROS NIVEL BÁSICO
                         </a>
-                        <a href="/cursos/finanzas/planificacion-control-obras" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/educacion/estimulacion-temprana" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             ESTIMULACIÓN TEMPRANA
                         </a>
-                        <a href="/cursos/finanzas/montaje-seguridad-andamios" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/educacion/tea-trastorno-espectro-autista" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             TRASTORNO DEL ESPECTRO AUTISTA
                         </a>
-                        <a href="/cursos/finanzas/manejo-mantencion-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                        <a href="/areas/educacion/resolucion-conflictos-mediacion-escolar" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                             RESOLUCIÓN DE CONFLICTOS Y MEDIACIÓN ESCOLAR
                         </a>
                     </div>
                 </div>
             </div>
 
-        <!-- Educacion - con submenu -->
+        <!-- Salud - con submenu -->
     <div class="group/salud">
-        <a href="/cursos/salud" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+        <a href="/areas/salud" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
         <span class= "uppercase" "flex-1">salud</span>
         <svg class="ml-2 h-4 w-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
         </svg>
         </a>
-            <!-- Submenu de Educacion -->
+            <!-- Submenu de salud -->
             <div class="uppercase absolute left-full top-0 ml-1 w-96 bg-white dark:bg-gray-800 rounded-md shadow-lg border border-gray-200 dark:border-gray-700 opacity-0 invisible transition-all duration-200 z-50
                         group-hover/salud:opacity-100 group-hover/salud:visible">
             <!-- Título del submenu -->
@@ -327,19 +333,19 @@ const getLinkClass = (path: string, hasDropdown = false) => {
                     <h3 class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Especialidades</h3>
                 </div>
                 <div class="py-1 max-h-[500px] overflow-y-auto">
-                    <a href="/cursos/finanzas/finanzas" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/salud/plasma-rico-en-plaquetas" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         Plasma Rico En Plaquetas
                     </a>
-                    <a href="/cursos/finanzas/finanzas" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/salud/primeros-auxilios-y-rcp" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         Primeros Auxilios Y RCP
                     </a>
-                    <a href="/cursos/finanzas/trabajo-altura-rescate" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/salud/asistente-en-enfermeria" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         Asistente En Enfermería
                     </a>
-                    <a href="/cursos/finanzas/responsabilidad-civil-penal" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/salud/soporte-vital-basico" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         Soporte Vital Básico
                     </a>
-                    <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/salud/cuidado-de-enfermos" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         Cuidado De Enfermos
                     </a>
                     </div>
@@ -348,7 +354,7 @@ const getLinkClass = (path: string, hasDropdown = false) => {
 
             <!-- Ofimatica - con submenu -->
     <div class="group/ofimatica">
-        <a href="/cursos/ofimatica" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+        <a href="/areas/ofimatica" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
         <span class="uppercase flex-1">ofimatica</span>
         <svg class="ml-2 h-4 w-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -362,37 +368,37 @@ const getLinkClass = (path: string, hasDropdown = false) => {
                     <h3 class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Especialidades</h3>
                 </div>
                 <div class="py-1 max-h-[500px] overflow-y-auto">
-                    <a href="/cursos/finanzas/finanzas" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/ofimatica/excel-basico-intermedio-avanzado" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         Excel Básico, Intermedio Y Avanzado
                     </a>
-                    <a href="/cursos/finanzas/finanzas" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/ofimatica/linux" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         Linux
                     </a>
-                    <a href="/cursos/finanzas/trabajo-altura-rescate" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/ofimatica/presto-software" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         Presto Software
                     </a>
-                    <a href="/cursos/finanzas/responsabilidad-civil-penal" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/ofimatica/project" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         Project
                     </a>
-                    <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/ofimatica/sharepoint" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         SharePoint
                     </a>
-                     <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                     <a href="/areas/ofimatica/power-bi" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         Power Bi
                     </a>
-                     <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                     <a href="/areas/ofimatica/prezi" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         Prezi
                     </a>
-                    <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/ofimatica/ethical-hacking" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         Ethical Hacking
                     </a>
-                    <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/ofimatica/ccna-200-301" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         CCNA 200-301
                     </a>
-                    <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/ofimatica/scrum" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         Scrum
                     </a>
-                    <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/ofimatica/autocad" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         AutoCAD
                     </a>
                     </div>
@@ -402,7 +408,7 @@ const getLinkClass = (path: string, hasDropdown = false) => {
            
             <!-- Prevencion de Riesgos - con submenu -->
     <div class="group/prevencion">
-        <a href="/cursos/ofimatica" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+        <a href="/areas/prevencion" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
         <span class="uppercase flex-1">Prevención de riesgos</span>
         <svg class="ml-2 h-4 w-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -416,43 +422,43 @@ const getLinkClass = (path: string, hasDropdown = false) => {
                     <h3 class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Especialidades</h3>
                 </div>
                 <div class="py-1 max-h-[500px] overflow-y-auto">
-                    <a href="/cursos/finanzas/finanzas" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/prevencion/trabajo-en-altura" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         TRABAJO EN ALTURA
                     </a>
-                    <a href="/cursos/finanzas/finanzas" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/prevencion/tecnica-de-estiba-y-desestiba" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         TÉCNICA DE ESTIBA Y DESESTIBA
                     </a>
-                    <a href="/cursos/finanzas/trabajo-altura-rescate" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/prevencion/manejo-y-manipulacion-de-sustancias-peligrosas" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         MANEJO Y MANIPULACIÓN DE SUSTANCIAS PELIGROSAS
                     </a>
-                    <a href="/cursos/finanzas/responsabilidad-civil-penal" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/prevencion/trabajo-seguro-en-espacios-confinados" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         TRABAJO SEGURO EN ESPACIOS CONFINADOS
                     </a>
-                    <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/prevencion/planificacion-control-ejecucion-obras" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         PLANIFICACIÓN, CONTROL Y EJECUCIÓN DE OBRAS
                     </a>
-                     <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                     <a href="/areas/prevencion/soldadura-al-arco" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         SOLDADURA AL ARCO
                     </a>
-                     <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                     <a href="/areas/prevencion/rigger" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         RIGGER
                     </a>
-                    <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/prevencion/responsabilidad-civil-penal" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         RESPONSABILIDAD CIVIL Y PENAL EN LA MINERÍA
                     </a>
-                    <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/prevencion/puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         PUENTE GRÚA
                     </a>
-                    <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/prevencion/manejo-defensivo-4x4" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         MANEJO DEFENSIVO 4X4
                     </a>
-                    <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/prevencion/grua-horquilla" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         GRÚA HORQUILLA
                     </a>
-                    <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/prevencion/intensivo-prevencion-riesgos" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         INTENSIVO EN PREVENCIÓN DE RIESGOS
                     </a>
-                    <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/prevencion/manipulacion-explosivos" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         MANIPULACIÓN DE EXPLOSIVOS
                     </a>
                     </div>
@@ -461,7 +467,7 @@ const getLinkClass = (path: string, hasDropdown = false) => {
 
         <!-- Electricidad - con submenu -->
     <div class="group/electricidad">
-        <a href="/cursos/electricidad" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+        <a href="/areas/electricidad" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
         <span class="uppercase flex-1">electricidad</span>
         <svg class="ml-2 h-4 w-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -475,34 +481,34 @@ const getLinkClass = (path: string, hasDropdown = false) => {
                     <h3 class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Especialidades</h3>
                 </div>
                 <div class="py-1 max-h-[500px] overflow-y-auto">
-                    <a href="/cursos/finanzas/finanzas" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/electricidad/aire-acondicionado" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         AIRE ACONDICIONADO
                     </a>
-                    <a href="/cursos/finanzas/finanzas" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/electricidad/control-y-comando-electrico" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         CONTROL Y COMANDO ELÉCTRICO
                     </a>
-                    <a href="/cursos/finanzas/trabajo-altura-rescate" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/electricidad/electricidad-y-automatizacion-industrial" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         ELECTRICIDAD Y AUTOMATIZACIÓN INDUSTRIAL
                     </a>
-                    <a href="/cursos/finanzas/responsabilidad-civil-penal" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/electricidad/electricidad-y-electronica-industrial" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         ELECTRICIDAD Y ELECTRÓNICA INDUSTRIAL
                     </a>
-                    <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/electricidad/aseo-industrial-tecnica-y-manipulacion-de-liquidos-limpiadores" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         ASEO INDUSTRIAL, TÉCNICA Y MANIPULACIÓN DE LÍQUIDOS LIMPIADORES
                     </a>
-                     <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                     <a href="/areas/electricidad/cubicacion-de-presupuestos-de-obras" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         CUBICACIÓN DE PRESUPUESTOS DE OBRAS
                     </a>
-                     <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                     <a href="/areas/electricidad/electricidad-y-electronica-aplicada-en-equipos-electricos" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         ELECTRICIDAD Y ELECTRÓNICA APLICADA EN EQUIPOS ELÉCTRICOS
                     </a>
-                    <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/electricidad/electromecanica-industrial" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         ELECTROMECÁNICA INDUSTRIAL
                     </a>
-                    <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/electricidad/fundamentos-teoricos-de-la-climatizacion" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         FUNDAMENTOS TEÓRICOS DE LA CLIMATIZACIÓN
                     </a>
-                    <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/electricidad/operacion-y-mantencion-de-bombas" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         OPERACIÓN Y MANTENCIÓN DE BOMBAS
                     </a>
                     </div>
@@ -511,7 +517,7 @@ const getLinkClass = (path: string, hasDropdown = false) => {
 
     <!-- Calidad - con submenu -->
     <div class="group/calidad-alimentacion">
-        <a href="/cursos/calidad-alimentacion" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+        <a href="/areas/calidad-alimentacion" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
         <span class="uppercase flex-1">Calidad y alimentación</span>
         <svg class="ml-2 h-4 w-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -525,22 +531,22 @@ const getLinkClass = (path: string, hasDropdown = false) => {
                     <h3 class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Especialidades</h3>
                 </div>
                 <div class="py-1 max-h-[500px] overflow-y-auto">
-                    <a href="/cursos/finanzas/finanzas" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/calidad/haccp" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         HACCP
                     </a>
-                    <a href="/cursos/finanzas/finanzas" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/calidad/brcgs" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         BRCGS
                     </a>
-                    <a href="/cursos/finanzas/trabajo-altura-rescate" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/calidad/manipulacion-alimentos-general" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         Manipulación De Alimentos General
                     </a>
-                    <a href="/cursos/finanzas/responsabilidad-civil-penal" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/calidad/manipulacion-alimentos-higiene" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         Manipulación De Alimentos E Higiene Alimentaria
                     </a>
-                    <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/calidad/calidad-seguridad-elaboracion-alimentos" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         Calidad Y Seguridad En La Elaboración De Alimentos
                     </a>
-                    <a href="/cursos/finanzas/formacion-operadores-puente-grua" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/calidad/prerrequisitos-aseguramiento-calidad" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         Prerrequisitos Y Aseguramiento De La Calidad
                     </a>
                     </div>
@@ -548,8 +554,8 @@ const getLinkClass = (path: string, hasDropdown = false) => {
             </div>
 
     <!-- Asesoria e imagen - con submenu -->
-    <div class="group/asesoria-imagen">
-        <a href="/cursos/asesoria-imagen" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+    <div class="group/asesoria-empresa">
+        <a href="/areas/asesoria-empresa" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
         <span class="uppercase flex-1">asesoria e imagen</span>
         <svg class="ml-2 h-4 w-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -557,28 +563,28 @@ const getLinkClass = (path: string, hasDropdown = false) => {
         </a>
             <!-- Asesoria e imagen Submenu -->
             <div class="uppercase absolute left-full top-0 ml-1 w-96 bg-white dark:bg-gray-800 rounded-md shadow-lg border border-gray-200 dark:border-gray-700 opacity-0 invisible transition-all duration-200 z-50
-                        group-hover/asesoria-imagen:opacity-100 group-hover/asesoria-imagen:visible">
+                        group-hover/asesoria-empresa:opacity-100 group-hover/asesoria-empresa:visible">
             <!-- Título del submenu -->
                 <div class="px-4 py-3 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 sticky top-0 z-10">
                     <h3 class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Especialidades</h3>
                 </div>
                 <div class="py-1 max-h-[500px] overflow-y-auto">
-                    <a href="/cursos/finanzas/finanzas" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/asesoria-empresa/curso-colorimetria" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         Curso Colorimetría
                     </a>
-                    <a href="/cursos/finanzas/finanzas" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/asesoria-empresa/asesoria-uniformes-empresas" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         Curso Asesoría en uniformes de empresa
                     </a>
-                    <a href="/cursos/finanzas/trabajo-altura-rescate" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/asesoria-empresa/imagen-personal-empresas" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         Curso Imagen personal para empresas
                     </a>
                     </div>
                 </div>
             </div>
 
-          <!-- Asesoria e imagen - con submenu -->
+          <!-- Geswtion forestal - con submenu -->
     <div class="group/gestion-forestal">
-        <a href="/cursos/gestion-forestal" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+        <a href="/areas/gestion-forestal" class="flex items-center justify-between px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
         <span class="uppercase flex-1">Gestion Forestal</span>
         <svg class="ml-2 h-4 w-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -593,55 +599,55 @@ const getLinkClass = (path: string, hasDropdown = false) => {
                 </div>
 
                 <div class="py-1 max-h-[500px] overflow-y-auto">
-                    <a href="/cursos/finanzas/finanzas" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/gestion-forestal/silvicultura" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         SILVICULTURA
                     </a>
-                    <a href="/cursos/finanzas/finanzas" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/gestion-forestal/manejo-forestal-sostenible" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         MANEJO FORESTAL SOSTENIBLE
                     </a>
-                    <a href="/cursos/finanzas/trabajo-altura-rescate" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                    <a href="/areas/gestion-forestal/tecnicas-de-tala-y-aprovechamiento" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         TÉCNICAS DE TALA Y APROVECHAMIENTO
                     </a>
-                     <a href="/cursos/finanzas/trabajo-altura-rescate" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                     <a href="/areas/gestion-forestal/gestion-de-bosques" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         GESTIÓN DE BOSQUES
                     </a>
-                     <a href="/cursos/finanzas/trabajo-altura-rescate" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                     <a href="/areas/gestion-forestal/tecnicas-de-procesamiento-de-la-madera" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         TÉCNICAS DE PROCESAMIENTO DE LA MADERA
                     </a>
-                     <a href="/cursos/finanzas/trabajo-altura-rescate" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                     <a href="/areas/gestion-forestal/gestion-de-calidad-en-la-fabricacion-de-madera" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         GESTIÓN DE CALIDAD EN LA FABRICACIÓN DE MADERA
                     </a>
-                     <a href="/cursos/finanzas/trabajo-altura-rescate" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                     <a href="/areas/gestion-forestal/control-de-inventario-forestal" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         CONTROL DE INVENTARIO
                     </a>
-                     <a href="/cursos/finanzas/trabajo-altura-rescate" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                     <a href="/areas/gestion-forestal/desarrollo-de-habilidades-artesanales-en-madera" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         DESARROLLO DE HABILIDADES ARTESANALES EN MADERA
                     </a>
-                     <a href="/cursos/finanzas/trabajo-altura-rescate" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                     <a href="/areas/gestion-forestal/diseno-sostenible" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         DISEÑO SOSTENIBLE
                     </a>
-                     <a href="/cursos/finanzas/trabajo-altura-rescate" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                     <a href="/areas/gestion-forestal/tecnicas-de-transporte-y-logistica-forestal" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         TÉCNICAS DE TRANSPORTE Y LOGÍSTICA FORESTAL
                     </a>
-                     <a href="/cursos/finanzas/trabajo-altura-rescate" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                     <a href="/areas/gestion-forestal/tecnicas-de-reforestacion-y-restauracion-ecologica" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         TÉCNICAS DE REFORESTACIÓN Y RESTAURACIÓN ECOLÓGICA
                     </a>
-                     <a href="/cursos/finanzas/trabajo-altura-rescate" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                     <a href="/areas/gestion-forestal/gestion-de-proyectos-forestales" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         GESTIÓN DE PROYECTOS FORESTALES
                     </a>
-                     <a href="/cursos/finanzas/trabajo-altura-rescate" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                     <a href="/areas/gestion-forestal/tecnicas-de-muestreo-y-analisis-forestal" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         TÉCNICAS DE MUESTREO Y ANÁLISIS FORESTAL
                     </a>
-                     <a href="/cursos/finanzas/trabajo-altura-rescate" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                     <a href="/areas/gestion-forestal/manejo-de-herramientas-y-maquinaria-forestal" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         MANEJO DE HERRAMIENTAS Y MAQUINARIA FORESTAL
                     </a>
-                     <a href="/cursos/finanzas/trabajo-altura-rescate" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                     <a href="/areas/gestion-forestal/seguridad-en-el-trabajo-forestal" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         SEGURIDAD EN EL TRABAJO FORESTAL
                     </a>
-                     <a href="/cursos/finanzas/trabajo-altura-rescate" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                     <a href="/areas/gestion-forestal/prevencion-de-incendios-forestales" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         PREVENCIÓN DE INCENDIOS FORESTALES
                     </a>
-                     <a href="/cursos/finanzas/trabajo-altura-rescate" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
+                     <a href="/areas/gestion-forestal/conocimiento-de-flora-y-fauna" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">
                         CONOCIMIENTO DE FLORA Y FAUNA
                     </a>
                     </div>
@@ -658,22 +664,12 @@ const getLinkClass = (path: string, hasDropdown = false) => {
         </a>
     </div>
 
-    <!-- Noticias - con dropdown -->
-    <div class="relative group" data-dropdown>
-        <button class={getLinkClass('/noticias', true)}>
-            Noticias
-            <svg class="ml-1.5 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-            </svg>
-        </button>
-        <div class="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-200 dark:border-gray-700">
-            <div class="py-1">
-                <a href="/noticias/actualidad" class="block px-5 py-3 text-base text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">Actualidad</a>
-                <a href="/noticias/blog" class="block px-5 py-3 text-base text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">Blog</a>
-                <a href="/noticias/eventos" class="block px-5 py-3 text-base text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">Eventos</a>
-            </div>
-        </div>
-    </div>
+    <!-- Noticias - enlace directo -->
+<div class="relative group">
+    <a href="/noticias" class={getLinkClass('/noticias')}>
+        Noticias
+    </a>
+</div>
 
     <!-- Sence - con dropdown -->
     <div class="relative group" data-dropdown>
@@ -685,9 +681,8 @@ const getLinkClass = (path: string, hasDropdown = false) => {
         </button>
         <div class="absolute left-0 mt-2 w-56 bg-white dark:bg-gray-800 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-200 dark:border-gray-700">
             <div class="py-1">
-                <a href="/sence/que-es-sence" class="block px-5 py-3 text-base text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">¿Qué es Sence?</a>
-                <a href="/sence/beneficios" class="block px-5 py-3 text-base text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">Beneficios</a>
-                <a href="/sence/cursos-disponibles" class="block px-5 py-3 text-base text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">Cursos Disponibles</a>
+                <a href="https://www.instagram.com/sencechile/" class="block px-5 py-3 text-base text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">Noticias Sence</a>
+                <a href="https://sence.gob.cl/personas/cursos" class="block px-5 py-3 text-base text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">Cursos Disponibles</a>
             </div>
         </div>
     </div>
@@ -714,117 +709,139 @@ const getLinkClass = (path: string, hasDropdown = false) => {
     </div>
 </nav>
 
-            <!-- Menú móvil (hamburguesa) -->
-            <button class="md:hidden p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800" id="mobile-menu-button" aria-label="Menú">
-                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <!-- Menú móvil (hamburguesa)  -->
+            <button class="xl:hidden p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" id="mobile-menu-button" aria-label="Menú">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" id="menu-icon">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+                <svg class="h-6 w-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" id="close-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
         </div>
 
-        <!-- Menú móvil desplegable -->
-        <div class="hidden md:hidden pb-4" id="mobile-menu">
-            <div class="flex flex-col space-y-1">
-                <a href="/" class="px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">Inicio</a>
+        <!-- Menú móvil desplegable  -->
+        <div class="hidden xl:hidden" id="mobile-menu">
+            <div class="flex flex-col space-y-1 pb-4 max-h-[calc(100vh-4rem)] overflow-y-auto">
+                <a href="/" class="px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    Inicio
+                </a>
                 
+                <!-- Cursos mobile -->
                 <div class="space-y-1">
-                    <button class="w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center justify-between" data-mobile-dropdown="cursos">
+                    <button class="w-full text-left px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center justify-between transition-colors" data-mobile-dropdown="cursos">
                         Cursos
-                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="h-5 w-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
                     <div class="hidden pl-4 space-y-1" id="mobile-dropdown-cursos">
-                        <a href="/cursos/presenciales" class="block px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">Cursos Presenciales</a>
-                        <a href="/cursos/online" class="block px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">Cursos Online</a>
-                        <a href="/cursos/corporativos" class="block px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">Cursos Corporativos</a>
+                        <a href="/areas/mineria" class="block px-4 py-2.5 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Minería, Maquinaria y Construcción</a>
+                        <a href="/areas/negocios" class="block px-4 py-2.5 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Negocios</a>
+                        <a href="/areas/finanzas" class="block px-4 py-2.5 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Finanzas</a>
+                        <a href="/areas/educacion" class="block px-4 py-2.5 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Educación</a>
+                        <a href="/areas/salud" class="block px-4 py-2.5 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Salud</a>
+                        <a href="/areas/ofimatica" class="block px-4 py-2.5 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Ofimática</a>
+                        <a href="/areas/prevencion" class="block px-4 py-2.5 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Prevención de Riesgos</a>
+                        <a href="/areas/electricidad" class="block px-4 py-2.5 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Electricidad</a>
+                        <a href="/areas/calidad-alimentacion" class="block px-4 py-2.5 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Calidad y Alimentación</a>
+                        <a href="/areas/asesoria-imagen" class="block px-4 py-2.5 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Asesoría e Imagen</a>
+                        <a href="/areas/gestion-forestal" class="block px-4 py-2.5 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Gestión Forestal</a>
                     </div>
                 </div>
 
+                <a href="/nosotros" class="px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    Sobre Nosotros
+                </a>
+                <!-- Noticias mobile -->
+                <a href="/noticias" class="px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    Noticias
+                </a>
+
+                <!-- Sence mobile con dropdown -->
                 <div class="space-y-1">
-                    <button class="w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center justify-between" data-mobile-dropdown="sobre-nosotros">
-                        Sobre Nosotros
-                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div class="hidden pl-4 space-y-1" id="mobile-dropdown-sobre-nosotros">
-                        <a href="/sobre-nosotros/empresa" class="block px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">Nuestra Empresa</a>
-                        <a href="/sobre-nosotros/equipo" class="block px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">Nuestro Equipo</a>
-                        <a href="/sobre-nosotros/mision-vision" class="block px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">Misión y Visión</a>
-                    </div>
-                </div>
+            <button class="w-full text-left px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center justify-between transition-colors" data-mobile-dropdown="sence">
+                Sence
+                <svg class="h-5 w-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+            <div class="hidden pl-4 space-y-1" id="mobile-dropdown-sence">
+                <a href="https://www.instagram.com/sencechile/" class="block px-5 py-3 text-base text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">Noticias Sence</a>
+                <a href="https://sence.gob.cl/personas/cursos" class="block px-5 py-3 text-base text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400">Cursos Disponibles</a>
+            </div>
+            </div>
 
-                <div class="space-y-1">
-                    <button class="w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center justify-between" data-mobile-dropdown="noticias">
-                        Noticias
-                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div class="hidden pl-4 space-y-1" id="mobile-dropdown-noticias">
-                        <a href="/noticias/actualidad" class="block px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">Actualidad</a>
-                        <a href="/noticias/blog" class="block px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">Blog</a>
-                        <a href="/noticias/eventos" class="block px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">Eventos</a>
-                    </div>
-                </div>
 
-                <div class="space-y-1">
-                    <button class="w-full text-left px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center justify-between" data-mobile-dropdown="sence">
-                        Sence
-                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div class="hidden pl-4 space-y-1" id="mobile-dropdown-sence">
-                        <a href="/sence/que-es-sence" class="block px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">¿Qué es Sence?</a>
-                        <a href="/sence/beneficios" class="block px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">Beneficios</a>
-                        <a href="/sence/cursos-disponibles" class="block px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">Cursos Disponibles</a>
-                    </div>
-                </div>
+                <a href="/contacto" class="px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    Contacto
+                </a>
 
-                <a href="/contacto" class="px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">Contacto</a>
-                <a href="/trabaja-con-nosotros" class="px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">Trabaja con Nosotros</a>
-                <a href="/aula-virtual" class="px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">Aula Virtual</a>
+                <a href="/TrabajaConNosotros" class="px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    Trabaja con Nosotros
+                </a>
+                
+                <!-- Aula Virtual mobile -->
+                <a href="/aula-virtual" class="px-4 py-3 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    Aula Virtual
+                </a>
             </div>
         </div>
     </div>
 </header>
 
 <!-- Espaciador para compensar el header fijo -->
-<div class="h-20 lg:h-24"></div>
+<div class="h-16 lg:h-20"></div>
+
 <script>
     // Manejo del menú móvil
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
     
     if (mobileMenuButton && mobileMenu) {
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+            menuIcon?.classList.toggle('hidden');
+            closeIcon?.classList.toggle('hidden');
         });
     }
 
-    // Manejo de dropdowns móviles
+    // Manejo de dropdowns móviles con animación
     document.querySelectorAll('[data-mobile-dropdown]').forEach(button => {
         button.addEventListener('click', () => {
             const dropdownId = button.getAttribute('data-mobile-dropdown');
             const dropdown = document.getElementById(`mobile-dropdown-${dropdownId}`);
+            const arrow = button.querySelector('svg');
+            
             if (dropdown) {
                 dropdown.classList.toggle('hidden');
+                arrow?.classList.toggle('rotate-180');
             }
         });
     });
 
     // Cerrar menú móvil al hacer click fuera
-        document.addEventListener('click', (e) => {
-            // e.target puede ser EventTarget | null; asegurar que es Node para usar contains
-            if (!(e.target instanceof Node)) return;
-            if (mobileMenuButton && mobileMenu && 
-                !mobileMenuButton.contains(e.target) && 
-                !mobileMenu.contains(e.target)) {
-                mobileMenu.classList.add('hidden');
-            }
-        });
+    document.addEventListener('click', (e) => {
+        if (!(e.target instanceof Node)) return;
+        if (mobileMenuButton && mobileMenu && 
+            !mobileMenuButton.contains(e.target) && 
+            !mobileMenu.contains(e.target)) {
+            mobileMenu.classList.add('hidden');
+            menuIcon?.classList.remove('hidden');
+            closeIcon?.classList.add('hidden');
+        }
+    });
+
+    // Cerrar menú móvil al cambiar el tamaño de ventana
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1280) { // xl breakpoint
+            mobileMenu?.classList.add('hidden');
+            menuIcon?.classList.remove('hidden');
+            closeIcon?.classList.add('hidden');
+        }
+    });
 
     // Agregar sombra al navbar cuando se hace scroll
     let lastScroll = 0;

@@ -6,10 +6,165 @@ const contact = {
   whatsapp: "https://wa.me/56953976610",
   address: "Santiago, Chile",
 };
+
+// Áreas de especialización
+const areas = [
+  { id: "mineria", nombre: "Minería, Maquinaria Pesada y Construcción" },
+  { id: "negocios", nombre: "Negocios" },
+  { id: "finanzas", nombre: "Finanzas" },
+  { id: "educacion", nombre: "Educación" },
+  { id: "salud", nombre: "Salud" },
+  { id: "ofimatica", nombre: "Ofimática" },
+  { id: "prevencion", nombre: "Prevención de Riesgos" },
+  { id: "electricidad", nombre: "Electricidad" },
+  { id: "calidad", nombre: "Calidad y Alimentación" },
+  { id: "asesoria", nombre: "Asesoría e Imagen" },
+  { id: "forestal", nombre: "Gestión Forestal" }
+];
+
+// Cursos por área (ejemplo con algunos cursos principales)
+const cursosPorArea = {
+  mineria: [
+    "Trabajo En Altura Y Rescate (Estándar Norma ECF2)",
+    "Formación De Operadores De Puente Grúa",
+    "Basedet",
+    "Hipobaria Intermitente Crónica A Gran Altitud",
+    "Manejo A La Defensiva De Vehículos Livianos Y Pesados",
+    "Planificación, Control Y Ejecución De Obras",
+    "Montaje Y Seguridad De Andamios",
+    "Manejo Y Mantención Puente Grúa",
+    "Manejo Y Mantención Grúa Horquilla",
+    "Operación De Grúa Alza Hombre",
+    "Manejo 4×4 Alta Montaña",
+    "Rigger (Aparejador)",
+    "Responsabilidad Civil Y Penal En La Minería"
+  ],
+  negocios: [
+    "Administración Y Control De Inventario Básico",
+    "Administración Del Tiempo (Metodología GTD)",
+    "Comunicación Efectiva Y Manejo De Conflictos",
+    "Gestión Y Dirección De Proyectos",
+    "Ventas Consultivas (Modelo Harvard)",
+    "Comercio Exterior Y Transporte Internacional",
+    "Trabajo En Equipo Y Comunicación Efectiva",
+    "Técnica De Venta Consultiva",
+    "Neuroventas",
+    "Marketing",
+    "Oratoria Y Manejo De La Voz",
+    "Indicador De Gestión KPI",
+    "Servicio Al Cliente Y Atención Call Center"
+  ],
+  finanzas: [
+    "Contabilidad Básica",
+    "Cobranza Efectiva",
+    "Administración De Edificios Y Condominios",
+    "Evaluación De Proyectos",
+    "Legislación Laboral Y Tributaria",
+    "Gestión De Talentos",
+    "Operación Renta",
+    "Norma IFRS/NIIF",
+    "Administración Y Control De Bodegas E Inventario",
+    "Norma ISO 9000-2015",
+    "Gestión De Procesos",
+    "Control De Gestión",
+    "Cálculo De Remuneraciones"
+  ],
+  educacion: [
+    "Inspector Educacional",
+    "Matemática En El Aula",
+    "Neurociencia Para El Desarrollo Del Aprendizaje",
+    "Mediación Familiar",
+    "Elaboración De Instrumentos De Evaluación",
+    "Educación En Chino Mandarín E Inglés",
+    "Español Para Extranjeros Nivel Básico",
+    "Estimulación Temprana",
+    "Trastorno Del Espectro Autista",
+    "Resolución De Conflictos Y Mediación Escolar"
+  ],
+  salud: [
+    "Plasma Rico En Plaquetas",
+    "Primeros Auxilios Y RCP",
+    "Asistente En Enfermería",
+    "Soporte Vital Básico",
+    "Cuidado De Enfermos"
+  ],
+  ofimatica: [
+    "Excel Básico, Intermedio Y Avanzado",
+    "Linux",
+    "Presto Software",
+    "Project",
+    "SharePoint",
+    "Power BI",
+    "Prezi",
+    "Ethical Hacking",
+    "CCNA 200-301",
+    "Scrum",
+    "AutoCAD"
+  ],
+  prevencion: [
+    "Trabajo En Altura",
+    "Técnica De Estiba Y Desestiba",
+    "Manejo Y Manipulación De Sustancias Peligrosas",
+    "Trabajo Seguro En Espacios Confinados",
+    "Planificación, Control Y Ejecución De Obras",
+    "Soldadura Al Arco",
+    "Rigger",
+    "Responsabilidad Civil Y Penal En La Minería",
+    "Puente Grúa",
+    "Manejo Defensivo 4X4",
+    "Grúa Horquilla",
+    "Intensivo En Prevención De Riesgos",
+    "Manipulación De Explosivos"
+  ],
+  electricidad: [
+    "Aire Acondicionado",
+    "Control Y Comando Eléctrico",
+    "Electricidad Y Automatización Industrial",
+    "Electricidad Y Electrónica Industrial",
+    "Aseo Industrial, Técnica Y Manipulación De Líquidos Limpiadores",
+    "Cubicación De Presupuestos De Obras",
+    "Electricidad Y Electrónica Aplicada En Equipos Eléctricos",
+    "Electromecánica Industrial",
+    "Fundamentos Teóricos De La Climatización",
+    "Operación Y Mantención De Bombas"
+  ],
+  calidad: [
+    "HACCP",
+    "BRCGS",
+    "Manipulación De Alimentos General",
+    "Manipulación De Alimentos E Higiene Alimentaria",
+    "Calidad Y Seguridad En La Elaboración De Alimentos",
+    "Prerrequisitos Y Aseguramiento De La Calidad"
+  ],
+  asesoria: [
+    "Curso Colorimetría",
+    "Curso Asesoría En Uniformes De Empresa",
+    "Curso Imagen Personal Para Empresas"
+  ],
+  forestal: [
+    "Silvicultura",
+    "Manejo Forestal Sostenible",
+    "Técnicas De Tala Y Aprovechamiento",
+    "Gestión De Bosques",
+    "Técnicas De Procesamiento De La Madera",
+    "Gestión De Calidad En La Fabricación De Madera",
+    "Control De Inventario",
+    "Desarrollo De Habilidades Artesanales En Madera",
+    "Diseño Sostenible",
+    "Técnicas De Transporte Y Logística Forestal",
+    "Técnicas De Reforestación Y Restauración Ecológica",
+    "Gestión De Proyectos Forestales",
+    "Técnicas De Muestreo Y Análisis Forestal",
+    "Manejo De Herramientas Y Maquinaria Forestal",
+    "Seguridad En El Trabajo Forestal",
+    "Prevención De Incendios Forestales",
+    "Conocimiento De Flora Y Fauna"
+  ]
+};
 ---
 
-<section id="#formulario" class="bg-white font-[Verdana,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif]">
-  <div class="max-w-7xl mx-auto px-6 md:px-12 grid gap-10 md:grid-cols-5 ">
+<section id="formulario" class="bg-white py-16 font-[Verdana,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif]">
+  <div class="max-w-7xl mx-auto px-6 md:px-12 grid gap-10 md:grid-cols-5">
     <!-- Formulario -->
     <div class="md:col-span-3 rounded-2xl border border-slate-200 p-6 shadow-sm">
       <h3 class="text-2xl font-bold text-[#0b1a33] mb-2">Envíanos tu consulta</h3>
@@ -17,56 +172,188 @@ const contact = {
 
       <form id="contact-form" class="grid grid-cols-1 md:grid-cols-2 gap-4"
             onsubmit="return window.handleContactSubmit(event)">
+        
+        <!-- Nombre -->
         <div class="col-span-1">
-          <label class="block text-sm text-slate-600 mb-1">Nombre y Apellido</label>
-          <input required name="nombre" class="w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-[#0b1a33]" />
+          <label class="block text-sm font-medium text-slate-700 mb-1">
+            Nombre y Apellido <span class="text-red-500">*</span>
+          </label>
+          <input 
+            required 
+            name="nombre" 
+            placeholder="Juan Pérez"
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-[#0b1a33] focus:ring-1 focus:ring-[#0b1a33] transition" 
+          />
         </div>
 
+        <!-- Empresa -->
         <div class="col-span-1">
-          <label class="block text-sm text-slate-600 mb-1">Empresa (opcional)</label>
-          <input name="empresa" class="w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-[#0b1a33]" />
+          <label class="block text-sm font-medium text-slate-700 mb-1">Empresa</label>
+          <input 
+            name="empresa" 
+            placeholder="Nombre de tu empresa"
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-[#0b1a33] focus:ring-1 focus:ring-[#0b1a33] transition" 
+          />
         </div>
 
+        <!-- Correo -->
         <div class="col-span-1">
-          <label class="block text-sm text-slate-600 mb-1">Correo</label>
-          <input type="email" required name="email" class="w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-[#0b1a33]" />
+          <label class="block text-sm font-medium text-slate-700 mb-1">
+            Correo Electrónico <span class="text-red-500">*</span>
+          </label>
+          <input 
+            type="email" 
+            required 
+            name="email" 
+            placeholder="correo@empresa.cl"
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-[#0b1a33] focus:ring-1 focus:ring-[#0b1a33] transition" 
+          />
         </div>
 
+        <!-- Teléfono -->
         <div class="col-span-1">
-          <label class="block text-sm text-slate-600 mb-1">Teléfono</label>
-          <input type="tel" name="telefono" class="w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-[#0b1a33]" />
+          <label class="block text-sm font-medium text-slate-700 mb-1">
+            Teléfono <span class="text-red-500">*</span>
+          </label>
+          <input 
+            type="tel" 
+            required
+            name="telefono"
+            placeholder="+56 9 1234 5678"
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-[#0b1a33] focus:ring-1 focus:ring-[#0b1a33] transition" 
+          />
         </div>
 
+        <!-- Asunto -->
         <div class="col-span-2">
-          <label class="block text-sm text-slate-600 mb-1">Asunto</label>
-          <select name="asunto" class="w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-[#0b1a33]">
-            <option>Capacitaciones</option>
-            <option>Asesorías</option>
-            <option>Cotización</option>
-            <option>Otro</option>
+          <label class="block text-sm font-medium text-slate-700 mb-1">
+            Asunto <span class="text-red-500">*</span>
+          </label>
+          <select 
+            name="asunto" 
+            id="asunto-select"
+            required
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-[#0b1a33] focus:ring-1 focus:ring-[#0b1a33] transition">
+            <option value="">- Seleccionar asunto -</option>
+            <option value="capacitaciones">Capacitaciones</option>
+            <option value="asesorias">Asesorías</option>
+            <option value="cotizacion">Cotización</option>
+            <option value="otro">Otro</option>
           </select>
         </div>
 
-        <div class="col-span-2">
-          <label class="block text-sm text-slate-600 mb-1">Mensaje</label>
-          <textarea required name="mensaje" rows="5" class="w-full rounded-lg border border-slate-300 px-3 py-2 outline-none focus:border-[#0b1a33]"></textarea>
+        <!-- CAMPOS DINÁMICOS PARA CAPACITACIONES -->
+        <div id="campos-capacitaciones" class="col-span-2 hidden">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-blue-50/50 rounded-lg border border-blue-200">
+            
+            <!-- Área de Especialización -->
+            <div class="col-span-1">
+              <label class="block text-sm font-medium text-slate-700 mb-1">
+                Área de Especialización <span class="text-red-500">*</span>
+              </label>
+              <select 
+                name="area" 
+                id="area-select"
+                class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-[#0b1a33] focus:ring-1 focus:ring-[#0b1a33] transition bg-white">
+                <option value="">- Seleccionar área -</option>
+                {areas.map(area => (
+                  <option value={area.id}>{area.nombre}</option>
+                ))}
+              </select>
+            </div>
+
+            <!-- Curso -->
+            <div class="col-span-1">
+              <label class="block text-sm font-medium text-slate-700 mb-1">
+                Curso <span class="text-red-500">*</span>
+              </label>
+              <select 
+                name="curso" 
+                id="curso-select"
+                disabled
+                class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-[#0b1a33] focus:ring-1 focus:ring-[#0b1a33] transition bg-white disabled:bg-slate-100 disabled:cursor-not-allowed">
+                <option value="">- Primero selecciona un área -</option>
+              </select>
+            </div>
+
+            <!-- Cantidad de Alumnos -->
+            <div class="col-span-1">
+              <label class="block text-sm font-medium text-slate-700 mb-1">
+                Cantidad de Alumnos
+              </label>
+              <select 
+                name="cantidad_alumnos"
+                class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-[#0b1a33] focus:ring-1 focus:ring-[#0b1a33] transition bg-white">
+                <option value="">- Seleccionar cantidad -</option>
+                <option value="1-10">1 - 10 personas</option>
+                <option value="11-20">11 - 20 personas</option>
+                <option value="21-30">21 - 30 personas</option>
+                <option value="31-50">31 - 50 personas</option>
+                <option value="50+">Más de 50 personas</option>
+              </select>
+            </div>
+
+            <!-- Modalidad -->
+            <div class="col-span-1">
+              <label class="block text-sm font-medium text-slate-700 mb-1">
+                Modalidad
+              </label>
+              <select 
+                name="modalidad"
+                class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-[#0b1a33] focus:ring-1 focus:ring-[#0b1a33] transition bg-white">
+                <option value="">- Seleccionar modalidad -</option>
+                <option value="presencial">Presencial</option>
+                <option value="online">Online / Remoto</option>
+                <option value="mixto">Mixto (Híbrido)</option>
+              </select>
+            </div>
+          </div>
         </div>
 
+        <!-- Mensaje -->
+        <div class="col-span-2">
+          <label class="block text-sm font-medium text-slate-700 mb-1">
+            Mensaje <span class="text-red-500">*</span>
+          </label>
+          <textarea 
+            required 
+            name="mensaje" 
+            rows="5" 
+            placeholder="Cuéntanos más sobre tus necesidades de capacitación o asesoría..."
+            class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-[#0b1a33] focus:ring-1 focus:ring-[#0b1a33] transition"></textarea>
+        </div>
+
+        <!-- Consentimiento -->
         <div class="col-span-2 flex items-start gap-2">
-          <input required type="checkbox" id="consent" class="mt-1" />
+          <input 
+            required 
+            type="checkbox" 
+            id="consent" 
+            class="mt-1 w-4 h-4 text-[#0b1a33] border-slate-300 rounded focus:ring-[#0b1a33]" 
+          />
           <label for="consent" class="text-sm text-slate-600">
-            Acepto ser contactado(a) por CyC Consultores y su política de privacidad.
+            Acepto ser contactado(a) por CyC Consultores y acepto la <a href="/politica-privacidad" class="text-[#0b1a33] hover:underline">política de privacidad</a>.
           </label>
         </div>
 
+        <!-- Botones -->
         <div class="col-span-2 flex flex-wrap gap-3 pt-2">
-          <button type="submit"
-                  class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-white bg-[#0b1a33] hover:bg-[#0a1730] transition">
+          <button 
+            type="submit"
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-white bg-[#0b1a33] hover:bg-[#0a1730] transition shadow-lg hover:shadow-xl">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
             Enviar consulta
           </button>
 
-          <a href={contact.whatsapp} target="_blank"
-             class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-[#0b1a33] border border-[#0b1a33] hover:bg-[#0b1a33] hover:text-white transition">
+          <a 
+            href={contact.whatsapp} 
+            target="_blank"
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-[#0b1a33] border-2 border-[#0b1a33] hover:bg-[#0b1a33] hover:text-white transition">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
             WhatsApp directo
           </a>
         </div>
@@ -77,45 +364,159 @@ const contact = {
 
     <!-- Datos de contacto -->
     <aside class="md:col-span-2 rounded-2xl border border-slate-200 p-6 shadow-sm bg-slate-50">
-      <h3 class="text-2xl font-bold text-[#0b1a33] mb-2">Datos de contacto</h3>
-      <ul class="space-y-3 text-slate-700">
-        <li><span class="font-semibold">Teléfono:</span> {contact.phone}</li>
-        <li><span class="font-semibold">Correo:</span> <a class="hover:text-[#facc15]" href={`mailto:${contact.email}`}>{contact.email}</a></li>
-        <li><span class="font-semibold">Ubicación:</span> {contact.address}</li>
-        <li><span class="font-semibold">Horario:</span> L–V 9:00–18:30</li>
+      <h3 class="text-2xl font-bold text-[#0b1a33] mb-4">Datos de contacto</h3>
+      <ul class="space-y-4 text-slate-700">
+        <li class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-[#0b1a33] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          <div>
+            <span class="font-semibold block">Teléfono</span>
+            <a href={`tel:${contact.phone}`} class="hover:text-[#0b1a33]">{contact.phone}</a>
+          </div>
+        </li>
+        <li class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-[#0b1a33] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          <div>
+            <span class="font-semibold block">Correo</span>
+            <a class="hover:text-[#0b1a33]" href={`mailto:${contact.email}`}>{contact.email}</a>
+          </div>
+        </li>
+        <li class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-[#0b1a33] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          <div>
+            <span class="font-semibold block">Ubicación</span>
+            <span>{contact.address}</span>
+          </div>
+        </li>
+        <li class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-[#0b1a33] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <div>
+            <span class="font-semibold block">Horario</span>
+            <span>Lunes a Viernes<br/>9:00 - 18:30 hrs</span>
+          </div>
+        </li>
       </ul>
-      <div class="mt-6 p-4 rounded-xl border border-[#facc15]/30 bg-[#facc15]/10 text-[#0b1a33]">
-        ¿Caso urgente? Escríbenos por WhatsApp y te respondemos a la brevedad.
+      <div class="mt-6 p-4 rounded-xl border-2 border-[#facc15] bg-[#facc15]/10 text-[#0b1a33]">
+        <p class="text-sm font-medium flex items-start gap-2">
+          <svg class="w-5 h-5 text-[#facc15] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+          </svg>
+          ¿Caso urgente? Escríbenos por WhatsApp y te respondemos a la brevedad.
+        </p>
       </div>
     </aside>
   </div>
 </section>
 
-<script>
-  declare global {
-    interface Window {
-      handleContactSubmit: (e: SubmitEvent) => boolean;
-    }
-  }
+<script define:vars={{ cursosPorArea }}>
+  // Manejo de campos dinámicos
+  const asuntoSelect = document.getElementById('asunto-select');
+  const camposCapacitaciones = document.getElementById('campos-capacitaciones');
+  const areaSelect = document.getElementById('area-select');
+  const cursoSelect = document.getElementById('curso-select');
 
+  // Mostrar/ocultar campos de capacitaciones
+  asuntoSelect?.addEventListener('change', (e) => {
+    const valor = (e.target instanceof HTMLSelectElement) ? e.target.value : '';
+    if (valor === 'capacitaciones') {
+      camposCapacitaciones?.classList.remove('hidden');
+      // Hacer campos requeridos
+      areaSelect?.setAttribute('required', 'true');
+      cursoSelect?.setAttribute('required', 'true');
+    } else {
+      camposCapacitaciones?.classList.add('hidden');
+      // Quitar requeridos
+      areaSelect?.removeAttribute('required');
+      cursoSelect?.removeAttribute('required');
+      // Limpiar selecciones
+      if (areaSelect) areaSelect.value = '';
+      if (cursoSelect) {
+        cursoSelect.value = '';
+        cursoSelect.disabled = true;
+        cursoSelect.innerHTML = '<option value="">- Primero selecciona un área -</option>';
+      }
+    }
+  });
+
+  // Cargar cursos según área seleccionada
+  areaSelect?.addEventListener('change', (e) => {
+    const areaId = (e.target instanceof HTMLSelectElement) ? e.target.value : '';
+    
+    if (!areaId || !cursoSelect) {
+      if (cursoSelect) {
+        cursoSelect.disabled = true;
+        cursoSelect.innerHTML = '<option value="">- Primero selecciona un área -</option>';
+      }
+      return;
+    }
+
+    const cursos = cursosPorArea[areaId] || [];
+    
+    cursoSelect.disabled = false;
+    cursoSelect.innerHTML = '<option value="">- Seleccionar curso -</option>' +
+      cursos.map((curso) => `<option value="${curso}">${curso}</option>`).join('');
+  });
+
+  // Manejo del envío del formulario
   window.handleContactSubmit = (e) => {
     e.preventDefault();
-    const fd = new FormData(e.target as HTMLFormElement);
+    const form = e.target instanceof HTMLFormElement ? e.target : null;
+    if (!form) return false;
+    const fd = new FormData(form);
     const data = Object.fromEntries(fd.entries());
+    const msgEl = document.getElementById('form-msg');
 
-    // OPCIÓN 1: mailto (rápida, sin backend)
-    const subject = encodeURIComponent(`[Contacto CyC] ${data.asunto ?? "Consulta"}`);
-    const body = encodeURIComponent(
-      `Nombre: ${data.nombre}\nEmpresa: ${data.empresa ?? "-"}\nCorreo: ${data.email}\nTeléfono: ${data.telefono ?? "-"}\n\nMensaje:\n${data.mensaje}`
-    );
-    window.location.href = `mailto:contacto@consultorescyc.cl?subject=${subject}&body=${body}`;
+    // Construir el cuerpo del email
+    let body = `Nombre: ${data.nombre}\nEmpresa: ${data.empresa || "-"}\nCorreo: ${data.email}\nTeléfono: ${data.telefono}\nAsunto: ${data.asunto}\n\n`;
 
-    // feedback visual
-    const msg = document.getElementById("form-msg");
-    if (msg) {
-      msg.textContent = "Abriendo tu cliente de correo… Si prefieres, usa el botón de WhatsApp.";
-      msg.classList.remove("hidden");
+    // Si es capacitación, agregar detalles adicionales
+    if (data.asunto === 'capacitaciones') {
+      body += `--- DETALLES DE CAPACITACIÓN ---\n`;
+      body += `Área: ${data.area || "-"}\n`;
+      body += `Curso: ${data.curso || "-"}\n`;
+      body += `Cantidad de Alumnos: ${data.cantidad_alumnos || "-"}\n`;
+      body += `Modalidad: ${data.modalidad || "-"}\n\n`;
     }
+
+    body += `Mensaje:\n${data.mensaje}\n`;
+
+    // Enviar por mailto (puedes cambiar esto por un endpoint de API)
+    const subject = encodeURIComponent(`Consulta: ${data.asunto}`);
+    const mailtoBody = encodeURIComponent(body);
+    window.location.href = `mailto:contacto@consultorescyc.cl?subject=${subject}&body=${mailtoBody}`;
+
+    // Mostrar mensaje de éxito
+    if (msgEl) {
+      msgEl.textContent = '¡Gracias! Se abrirá tu cliente de correo. Si no se abre, envía tu consulta a contacto@consultorescyc.cl';
+      msgEl.classList.remove('hidden');
+      msgEl.classList.add('text-green-600');
+      form.reset();
+      
+      // Ocultar campos de capacitaciones si estaban visibles
+      const camposCapacitaciones = document.getElementById('campos-capacitaciones');
+      if (camposCapacitaciones) {
+        camposCapacitaciones.classList.add('hidden');
+      }
+      
+      // Limpiar selects de área y curso
+      const areaSelect = document.getElementById('area-select');
+      const cursoSelect = document.getElementById('curso-select');
+      if (areaSelect) areaSelect.value = '';
+      if (cursoSelect) {
+        cursoSelect.value = '';
+        cursoSelect.disabled = true;
+        cursoSelect.innerHTML = '<option value="">- Primero selecciona un área -</option>';
+      }
+    }
+
     return false;
   };
 </script>

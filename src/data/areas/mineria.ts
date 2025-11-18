@@ -76,7 +76,7 @@ export const MINERIA_ESPECIALIDADES: Especialidad[] = [
     featured: false
   },
   {
-    id: "planificacion-control-ejecucion-obras",
+    id: "planificacion-control-obras",
     title: "Planificación, Control Y Ejecución De Obras",
     shortDesc: "Herramientas para gestionar proyectos de construcción e infraestructura en entornos mineros.",
     image: "/img/mineria/Planificacion-control-y-ejecucion-de-obras__.jpg",
@@ -174,7 +174,7 @@ export const MINERIA_ESPECIALIDADES: Especialidad[] = [
     featured: false
   },
   {
-    id: "responsabilidad-civil-penal-mineria",
+    id: "responsabilidad-civil-penal",
     title: "Responsabilidad Civil Y Penal En La Minería",
     shortDesc: "Bases legales sobre responsabilidad civil y penal en accidentes laborales y enfermedades profesionales en minería.",
     image: "/img/mineria/Responsabilidad-civil-y-penal-en-la-mineria.jpg",
@@ -188,16 +188,17 @@ export const MINERIA_ESPECIALIDADES: Especialidad[] = [
     featured: false
   },
   {
-    id: "operacion-maquinaria-pesada",
+    id: "manejo-defensivo-y-prevencion-de-accidentes",
     title: "Manejo Defensivo Y Prevención De Accidentes",
     shortDesc: "Capacitación en manejo seguro de excavadoras, cargadores frontales, retroexcavadoras y equipos pesados mineros.",
     image: "/img/mineria/Manejo-defensivo-y-prevencion-de-accidentes.jpg",
-    target: "Operadores de equipos pesados y personal en formación para faenas mineras.",
+    target: "Conductores de vehiculos",
     benefits: [
-      "Reduce accidentes y aumenta la seguridad operacional.",
-      "Mejora la eficiencia en el manejo de equipos.",
-      "Extiende la vida útil de la maquinaria.",
-      "Cumple con estándares de seguridad minera."
+      "Reducción de la frecuencia y gravedad de los accidentes de tráfico.",
+      "Ahorro en costos de seguros y reclamos relacionadas con accidentes.",
+      "Mayor retención de conductores calificados y experimentados.",
+      "Mejora de la cultura de seguridad en la empresa.",
+      "Cumplimiento de requisitos legales y normativos en materia de seguridad vial."
     ],
     featured: false
   },

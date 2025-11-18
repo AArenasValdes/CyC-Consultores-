@@ -16,7 +16,7 @@ export const EDUCACION_ESPECIALIDADES: Especialidad[] = [
     featured: true
   },
   {
-    id: "neurociencia-aprendizaje",
+    id: "neurociencia-desarrollo-aprendizaje",
     title: "Neurociencia Para El Desarrollo Del Aprendizaje",
     shortDesc: "Cómo funciona el cerebro en relación con el aprendizaje y cómo aplicar ese conocimiento en el aula.",
     image: "/img/educacion/Neurociencia-para-el-aprendizaje.jpg",
